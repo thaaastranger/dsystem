@@ -8,6 +8,7 @@ export interface SidebarItem {
   icon: ReactNode;
   href?: string;
   active?: boolean;
+  disabled?: boolean;
   onClick?: () => void;
 }
 

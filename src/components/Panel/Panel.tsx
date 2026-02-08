@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PanelProps } from './Panel.types';
 import {
   ChevronRight,
@@ -6,7 +6,6 @@ import {
   Activity,
   BookOpen,
   Box,
-  Users,
   Settings,
   Phone,
   ChevronLeft
@@ -34,24 +33,27 @@ export const Panel: React.FC<PanelProps> = ({
     { label: 'Status', icon: <Activity size={20} /> },
     { label: 'Foundation', icon: <BookOpen size={20} /> },
     { label: 'Components', icon: <Box size={20} />, active: false },
-    { label: 'Members', icon: <Users size={20} /> },
-    { label: 'Settings', icon: <Settings size={20} /> },
+    { label: 'Settings', icon: <Settings size={20} />, disabled: true },
   ],
   children,
   className,
   ...props
 }) => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
   return (
     <div className={`${styles.panel} ${className || ''}`} {...props}>
       {/* Sidebar */}
-      <aside className={styles.sidebar}>
+      <aside className={`${styles.sidebar} ${isCollapsed ? styles.sidebarCollapsed : ''}`}>
         {/* User Profile */}
         <div className={styles.sidebarHeader}>
           <div className={styles.avatar}>S</div>
-          <div className={styles.userInfo}>
-            <p className={styles.userName}>Sorabbani</p>
-            <p className={styles.userDomain}>sorabbani.com</p>
-          </div>
+          {!isCollapsed && (
+            <div className={styles.userInfo}>
+              <p className={styles.userName}>Sorabbani</p>
+              <p className={styles.userDomain}>sorabbani.com</p>
+            </div>
+          )}
         </div>
 
         {/* Navigation */}
@@ -59,25 +61,32 @@ export const Panel: React.FC<PanelProps> = ({
           {sidebarItems.map((item, index) => (
             <button
               key={index}
-              className={`${styles.navItem} ${item.active ? styles.navItemActive : ''}`}
-              onClick={item.onClick}
+              className={`${styles.navItem} ${item.active ? styles.navItemActive : ''} ${item.disabled ? styles.navItemDisabled : ''}`}
+              onClick={item.disabled ? undefined : item.onClick}
+              disabled={item.disabled}
             >
               <span className={styles.navIcon}>{item.icon}</span>
-              <span className={styles.navLabel}>{item.label}</span>
+              {!isCollapsed && <span className={styles.navLabel}>{item.label}</span>}
             </button>
           ))}
         </nav>
 
         {/* Footer */}
         <div className={styles.sidebarFooter}>
-          <div className={styles.helpSection}>
-            <span className={styles.helpIcon}>
-              <Phone size={16} />
-            </span>
-            <span className={styles.helpText}>Help & Feedback</span>
-          </div>
-          <button className={styles.collapseButton} aria-label="Collapse sidebar">
-            <ChevronLeft size={16} />
+          {!isCollapsed && (
+            <div className={styles.helpSection}>
+              <span className={styles.helpIcon}>
+                <Phone size={16} />
+              </span>
+              <span className={styles.helpText}>Help & Feedback</span>
+            </div>
+          )}
+          <button
+            className={styles.collapseButton}
+            aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            onClick={() => setIsCollapsed(!isCollapsed)}
+          >
+            {isCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
           </button>
         </div>
       </aside>

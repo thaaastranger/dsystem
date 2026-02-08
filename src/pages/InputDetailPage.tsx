@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Panel } from '../components/Panel';
 import { Input } from '../components/Input';
-import { Mail, Lock, Search, User, Info, Activity, BookOpen, Box, Users, Settings } from 'lucide-react';
+import { Mail, Lock, Search, User, Info, Activity, BookOpen, Box, Settings } from 'lucide-react';
 
 /**
  * Input Detail Page
@@ -300,8 +300,7 @@ export const InputDetailPage: React.FC<InputDetailPageProps> = ({ onBack, onBrea
         { label: 'Status', icon: <Activity size={20} />, onClick: onNavigateToStatus },
         { label: 'Foundation', icon: <BookOpen size={20} />, onClick: onNavigateToFoundation },
         { label: 'Components', icon: <Box size={20} />, active: true, onClick: onNavigateToList },
-        { label: 'Members', icon: <Users size={20} /> },
-        { label: 'Settings', icon: <Settings size={20} /> },
+        { label: 'Settings', icon: <Settings size={20} />, disabled: true },
       ]}
     >
       {activeTab === 'Overview' && <OverviewView />}

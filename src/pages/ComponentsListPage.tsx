@@ -3,7 +3,7 @@ import { Panel } from '../components/Panel';
 import { ComponentCard } from '../components/ComponentCard';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
-import { AlertCircle, Info, Activity, BookOpen, Box, Users, Settings } from 'lucide-react';
+import { AlertCircle, Info, Activity, BookOpen, Box, Settings } from 'lucide-react';
 
 /**
  * Components List Page
@@ -62,8 +62,7 @@ export const ComponentsListPage: React.FC<ComponentsListPageProps> = ({
         { label: 'Status', icon: <Activity size={20} />, onClick: onNavigateToStatus },
         { label: 'Foundation', icon: <BookOpen size={20} />, onClick: onNavigateToFoundation },
         { label: 'Components', icon: <Box size={20} />, active: true, onClick: onNavigateToList },
-        { label: 'Members', icon: <Users size={20} /> },
-        { label: 'Settings', icon: <Settings size={20} /> },
+        { label: 'Settings', icon: <Settings size={20} />, disabled: true },
       ]}
     >
       <div style={{

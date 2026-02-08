@@ -1,6 +1,6 @@
 import React from 'react';
 import { Panel } from '../components/Panel';
-import { Activity, BookOpen, Box, Users, Settings, Package, Palette, Type, Layers } from 'lucide-react';
+import { Activity, BookOpen, Box, Settings, Package, Palette, Type, Layers } from 'lucide-react';
 
 /**
  * Status Page
@@ -29,8 +29,7 @@ export const StatusPage: React.FC<StatusPageProps> = ({
         { label: 'Status', icon: <Activity size={20} />, active: true, onClick: onNavigateToStatus },
         { label: 'Foundation', icon: <BookOpen size={20} />, onClick: onNavigateToFoundation },
         { label: 'Components', icon: <Box size={20} />, onClick: onNavigateToList },
-        { label: 'Members', icon: <Users size={20} /> },
-        { label: 'Settings', icon: <Settings size={20} /> },
+        { label: 'Settings', icon: <Settings size={20} />, disabled: true },
       ]}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>

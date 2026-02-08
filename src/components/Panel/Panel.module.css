@@ -25,6 +25,12 @@
   padding: var(--padding-padding-6) var(--padding-padding-7); /* 12px 16px */
   background-color: #f7f7f7;
   flex-shrink: 0;
+  transition: width 200ms ease;
+}
+
+.sidebarCollapsed {
+  width: 60px;
+  padding: var(--padding-padding-6) var(--padding-padding-4); /* 12px 8px */
 }
 
 /* Sidebar Header - User Profile */
@@ -107,6 +113,12 @@
   color: #000;
 }
 
+.navItemDisabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .navIcon {
   width: 20px;
   height: 20px;
@@ -131,6 +143,10 @@
   padding: var(--padding-padding-2); /* 4px */
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   padding-top: var(--padding-padding-7); /* 16px */
+}
+
+.sidebarCollapsed .sidebarFooter {
+  justify-content: center;
 }
 
 .helpSection {

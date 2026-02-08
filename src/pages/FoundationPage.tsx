@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Panel } from '../components/Panel';
-import { Activity, BookOpen, Box, Users, Settings } from 'lucide-react';
+import { Activity, BookOpen, Box, Settings } from 'lucide-react';
 
 /**
  * Foundation Page
@@ -1223,8 +1223,7 @@ export const FoundationPage: React.FC<FoundationPageProps> = ({ onNavigateToList
         { label: 'Status', icon: <Activity size={20} />, onClick: onNavigateToStatus },
         { label: 'Foundation', icon: <BookOpen size={20} />, active: true },
         { label: 'Components', icon: <Box size={20} />, onClick: onNavigateToList },
-        { label: 'Members', icon: <Users size={20} /> },
-        { label: 'Settings', icon: <Settings size={20} /> },
+        { label: 'Settings', icon: <Settings size={20} />, disabled: true },
       ]}
     >
       {activeTab === 'Spacing' && <SpacingView />}
