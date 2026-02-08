@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { Button } from './components/Button';
 import { Panel } from './components/Panel';
 import { AlertCircle, Star, Activity, BookOpen, Box, Users, Settings } from 'lucide-react';
@@ -456,94 +457,89 @@ const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack, onBreadcrum
   );
 };
 
-function App() {
-  const [currentPage, setCurrentPage] = useState<'status' | 'list' | 'button' | 'inputs' | 'foundation'>('status');
+// Wrapper components that use navigation
+const StatusPageWrapper = () => {
+  const navigate = useNavigate();
 
-  const handleComponentClick = (componentId: string) => {
-    setCurrentPage(componentId as 'button' | 'inputs');
-  };
-
-  const handleBackToList = () => {
-    setCurrentPage('list');
-  };
-
-  const handleNavigateToStatus = () => {
-    setCurrentPage('status');
-  };
-
-  const handleNavigateToFoundation = () => {
-    setCurrentPage('foundation');
-  };
-
-  const handleBreadcrumbClick = (index: number, label: string) => {
-    // If clicking on "Components" in breadcrumb, go back to list
-    if (label === 'Components') {
-      setCurrentPage('list');
-    }
-  };
-
-  // Render appropriate page based on current navigation state
-  if (currentPage === 'status') {
-    return (
-      <StatusPage
-        onNavigateToList={handleBackToList}
-        onNavigateToFoundation={handleNavigateToFoundation}
-        onNavigateToStatus={handleNavigateToStatus}
-      />
-    );
-  }
-
-  if (currentPage === 'list') {
-    return (
-      <ComponentsListPage
-        onComponentClick={handleComponentClick}
-        onNavigateToList={handleBackToList}
-        onNavigateToFoundation={handleNavigateToFoundation}
-        onNavigateToStatus={handleNavigateToStatus}
-      />
-    );
-  }
-
-  if (currentPage === 'foundation') {
-    return (
-      <FoundationPage
-        onNavigateToList={handleBackToList}
-        onNavigateToStatus={handleNavigateToStatus}
-      />
-    );
-  }
-
-  if (currentPage === 'button') {
-    return (
-      <ButtonDetailPage
-        onBack={handleBackToList}
-        onBreadcrumbClick={handleBreadcrumbClick}
-        onNavigateToList={handleBackToList}
-        onNavigateToFoundation={handleNavigateToFoundation}
-        onNavigateToStatus={handleNavigateToStatus}
-      />
-    );
-  }
-
-  if (currentPage === 'inputs') {
-    return (
-      <InputDetailPage
-        onBack={handleBackToList}
-        onBreadcrumbClick={handleBreadcrumbClick}
-        onNavigateToList={handleBackToList}
-        onNavigateToFoundation={handleNavigateToFoundation}
-        onNavigateToStatus={handleNavigateToStatus}
-      />
-    );
-  }
-
-  // Default fallback to status page
   return (
     <StatusPage
-      onNavigateToList={handleBackToList}
-      onNavigateToFoundation={handleNavigateToFoundation}
-      onNavigateToStatus={handleNavigateToStatus}
+      onNavigateToList={() => navigate('/components')}
+      onNavigateToFoundation={() => navigate('/foundation')}
+      onNavigateToStatus={() => navigate('/')}
     />
+  );
+};
+
+const ComponentsListPageWrapper = () => {
+  const navigate = useNavigate();
+
+  return (
+    <ComponentsListPage
+      onComponentClick={(componentId) => navigate(`/components/${componentId}`)}
+      onNavigateToList={() => navigate('/components')}
+      onNavigateToFoundation={() => navigate('/foundation')}
+      onNavigateToStatus={() => navigate('/')}
+    />
+  );
+};
+
+const FoundationPageWrapper = () => {
+  const navigate = useNavigate();
+
+  return (
+    <FoundationPage
+      onNavigateToList={() => navigate('/components')}
+      onNavigateToStatus={() => navigate('/')}
+    />
+  );
+};
+
+const ButtonDetailPageWrapper = () => {
+  const navigate = useNavigate();
+
+  return (
+    <ButtonDetailPage
+      onBack={() => navigate('/components')}
+      onBreadcrumbClick={(index, label) => {
+        if (label === 'Components') {
+          navigate('/components');
+        }
+      }}
+      onNavigateToList={() => navigate('/components')}
+      onNavigateToFoundation={() => navigate('/foundation')}
+      onNavigateToStatus={() => navigate('/')}
+    />
+  );
+};
+
+const InputDetailPageWrapper = () => {
+  const navigate = useNavigate();
+
+  return (
+    <InputDetailPage
+      onBack={() => navigate('/components')}
+      onBreadcrumbClick={(index, label) => {
+        if (label === 'Components') {
+          navigate('/components');
+        }
+      }}
+      onNavigateToList={() => navigate('/components')}
+      onNavigateToFoundation={() => navigate('/foundation')}
+      onNavigateToStatus={() => navigate('/')}
+    />
+  );
+};
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<StatusPageWrapper />} />
+      <Route path="/components" element={<ComponentsListPageWrapper />} />
+      <Route path="/components/button" element={<ButtonDetailPageWrapper />} />
+      <Route path="/components/inputs" element={<InputDetailPageWrapper />} />
+      <Route path="/foundation" element={<FoundationPageWrapper />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 }
 
