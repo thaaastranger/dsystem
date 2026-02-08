@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Button } from './components/Button';
 import { Panel } from './components/Panel';
 import { AlertCircle, Star } from 'lucide-react';
+import { ComponentsListPage } from './pages/ComponentsListPage';
+import { InputDetailPage } from './pages/InputDetailPage';
 import './tokens/tokens.css';
 import './App.css';
 
 /**
  * Design System App
- * Showcases Button component with Figma panel layout
+ * Main application with navigation between components list and detail pages
  */
 
 // Specs component showing design tokens
@@ -310,7 +312,12 @@ const OverviewView = () => (
   </div>
 );
 
-function App() {
+// Button Detail Page component
+interface ButtonDetailPageProps {
+  onBack: () => void;
+}
+
+const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack }) => {
   const [activeTab, setActiveTab] = useState('Overview');
 
   const tabs = [
@@ -320,14 +327,17 @@ function App() {
     { label: 'Specs', active: activeTab === 'Specs' },
     { label: 'Changelog', active: activeTab === 'Changelog' },
   ];
+
   const handleTabClick = (tabLabel: string) => {
     setActiveTab(tabLabel);
   };
 
+  const breadcrumbItems = ['Components', 'Button'];
+
   return (
     <Panel
       title="Button Component"
-      breadcrumb={['Components', 'Button']}
+      breadcrumb={breadcrumbItems}
       tabs={tabs.map((tab) => ({
         ...tab,
         onClick: () => handleTabClick(tab.label),
@@ -352,6 +362,34 @@ function App() {
       )}
     </Panel>
   );
+};
+
+function App() {
+  const [currentPage, setCurrentPage] = useState<'list' | 'button' | 'inputs'>('list');
+
+  const handleComponentClick = (componentId: string) => {
+    setCurrentPage(componentId as 'button' | 'inputs');
+  };
+
+  const handleBackToList = () => {
+    setCurrentPage('list');
+  };
+
+  // Render appropriate page based on current navigation state
+  if (currentPage === 'list') {
+    return <ComponentsListPage onComponentClick={handleComponentClick} />;
+  }
+
+  if (currentPage === 'button') {
+    return <ButtonDetailPage onBack={handleBackToList} />;
+  }
+
+  if (currentPage === 'inputs') {
+    return <InputDetailPage onBack={handleBackToList} />;
+  }
+
+  // Default fallback
+  return <ComponentsListPage onComponentClick={handleComponentClick} />;
 }
 
 export default App;

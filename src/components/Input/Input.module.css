@@ -1,0 +1,131 @@
+/**
+ * Input Component Styles
+ * Token-driven styling for text input fields
+ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-padding-2, 4px);
+  width: 100%;
+}
+
+/* Label */
+.label {
+  font-family: var(--typography-fontFamily-inter, 'CircularXX', sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.17px;
+  color: var(--foreground-inverseprimary, black);
+  margin: 0;
+}
+
+.labelDisabled {
+  color: var(--foreground-disabled, #bababa);
+}
+
+/* Input Container */
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--padding-padding-3, 6px);
+  padding: var(--padding-padding-4, 8px);
+  background-color: var(--foreground-secondary, #f7f7f7);
+  border-radius: var(--radi-4, 6px);
+  border: 1px solid transparent;
+  transition: all 150ms ease;
+  min-width: 50px;
+}
+
+.inputContainer:hover {
+  background-color: #f7f7f7;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.04);
+}
+
+.inputContainer:has(input:focus) {
+  background-color: white;
+  border-color: var(--border-selected, black);
+  box-shadow: none;
+}
+
+.inputContainer:has(input:active) {
+  background-color: #f7f7f7;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.12);
+}
+
+.inputContainer:has(input:disabled) {
+  background-color: var(--background-disabled, #ededed);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Input Field */
+.input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--typography-fontFamily-inter, 'CircularXX', sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.17px;
+  color: var(--fill-content, black);
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+.input::placeholder {
+  color: var(--foreground-inversetertiary, #8f8f8f);
+}
+
+.input:focus::placeholder {
+  color: var(--foreground-inverseprimary, black);
+}
+
+.input:disabled {
+  color: var(--fill-contentdisabled, #bababa);
+  cursor: not-allowed;
+}
+
+.input:disabled::placeholder {
+  color: var(--foreground-disabled, #bababa);
+}
+
+/* Error State */
+.inputContainer:has(.error) {
+  border-color: var(--semantic-error, #ff0000);
+}
+
+/* Icons */
+.leadingIcon,
+.trailingIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--foreground-inverseprimary, black);
+}
+
+/* Helper Text */
+.helperText {
+  font-family: var(--typography-fontFamily-inter, 'CircularXX', sans-serif);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.66;
+  letter-spacing: 0.4px;
+  color: var(--foreground-inversetertiary, #8f8f8f);
+  margin: 0;
+}
+
+.helperError {
+  color: var(--semantic-error, #ff0000);
+}
+
+.helperDisabled {
+  color: var(--foreground-disabled, #bababa);
+}
