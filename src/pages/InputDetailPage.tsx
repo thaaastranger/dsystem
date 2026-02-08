@@ -12,9 +12,10 @@ interface InputDetailPageProps {
   onBack: () => void;
   onBreadcrumbClick: (index: number, label: string) => void;
   onNavigateToList: () => void;
+  onNavigateToFoundation?: () => void;
 }
 
-export const InputDetailPage: React.FC<InputDetailPageProps> = ({ onBack, onBreadcrumbClick, onNavigateToList }) => {
+export const InputDetailPage: React.FC<InputDetailPageProps> = ({ onBack, onBreadcrumbClick, onNavigateToList, onNavigateToFoundation }) => {
   const [activeTab, setActiveTab] = useState('Overview');
 
   const tabs = [
@@ -296,7 +297,7 @@ export const InputDetailPage: React.FC<InputDetailPageProps> = ({ onBack, onBrea
       }))}
       sidebarItems={[
         { label: 'Status', icon: <Activity size={20} /> },
-        { label: 'Foundation', icon: <BookOpen size={20} /> },
+        { label: 'Foundation', icon: <BookOpen size={20} />, onClick: onNavigateToFoundation },
         { label: 'Components', icon: <Box size={20} />, active: true, onClick: onNavigateToList },
         { label: 'Members', icon: <Users size={20} /> },
         { label: 'Settings', icon: <Settings size={20} /> },

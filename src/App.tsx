@@ -4,6 +4,7 @@ import { Panel } from './components/Panel';
 import { AlertCircle, Star, Activity, BookOpen, Box, Users, Settings } from 'lucide-react';
 import { ComponentsListPage } from './pages/ComponentsListPage';
 import { InputDetailPage } from './pages/InputDetailPage';
+import { FoundationPage } from './pages/FoundationPage';
 import './tokens/tokens.css';
 import './App.css';
 
@@ -317,9 +318,10 @@ interface ButtonDetailPageProps {
   onBack: () => void;
   onBreadcrumbClick: (index: number, label: string) => void;
   onNavigateToList: () => void;
+  onNavigateToFoundation?: () => void;
 }
 
-const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack, onBreadcrumbClick, onNavigateToList }) => {
+const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack, onBreadcrumbClick, onNavigateToList, onNavigateToFoundation }) => {
   const [activeTab, setActiveTab] = useState('Overview');
 
   const tabs = [
@@ -347,7 +349,7 @@ const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack, onBreadcrum
       }))}
       sidebarItems={[
         { label: 'Status', icon: <Activity size={20} /> },
-        { label: 'Foundation', icon: <BookOpen size={20} /> },
+        { label: 'Foundation', icon: <BookOpen size={20} />, onClick: onNavigateToFoundation },
         { label: 'Components', icon: <Box size={20} />, active: true, onClick: onNavigateToList },
         { label: 'Members', icon: <Users size={20} /> },
         { label: 'Settings', icon: <Settings size={20} /> },
@@ -375,7 +377,7 @@ const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack, onBreadcrum
 };
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'list' | 'button' | 'inputs'>('list');
+  const [currentPage, setCurrentPage] = useState<'list' | 'button' | 'inputs' | 'foundation'>('list');
 
   const handleComponentClick = (componentId: string) => {
     setCurrentPage(componentId as 'button' | 'inputs');
@@ -383,6 +385,10 @@ function App() {
 
   const handleBackToList = () => {
     setCurrentPage('list');
+  };
+
+  const handleNavigateToFoundation = () => {
+    setCurrentPage('foundation');
   };
 
   const handleBreadcrumbClick = (index: number, label: string) => {
@@ -398,6 +404,15 @@ function App() {
       <ComponentsListPage
         onComponentClick={handleComponentClick}
         onNavigateToList={handleBackToList}
+        onNavigateToFoundation={handleNavigateToFoundation}
+      />
+    );
+  }
+
+  if (currentPage === 'foundation') {
+    return (
+      <FoundationPage
+        onNavigateToList={handleBackToList}
       />
     );
   }
@@ -408,6 +423,7 @@ function App() {
         onBack={handleBackToList}
         onBreadcrumbClick={handleBreadcrumbClick}
         onNavigateToList={handleBackToList}
+        onNavigateToFoundation={handleNavigateToFoundation}
       />
     );
   }
@@ -418,6 +434,7 @@ function App() {
         onBack={handleBackToList}
         onBreadcrumbClick={handleBreadcrumbClick}
         onNavigateToList={handleBackToList}
+        onNavigateToFoundation={handleNavigateToFoundation}
       />
     );
   }
