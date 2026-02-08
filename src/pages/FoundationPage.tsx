@@ -107,71 +107,224 @@ export const FoundationPage: React.FC<FoundationPageProps> = ({ onNavigateToList
 
   // Border Radius tokens
   const BorderRadiusView = () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       <section>
-        <h2 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '16px', marginTop: 0 }}>
+        <h2 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '8px', marginTop: 0 }}>
           Border Radius Tokens
         </h2>
-        <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.7)', marginTop: 0, marginBottom: '32px' }}>
-          Corner radius scale tokens for consistent rounded corners across components.
+        <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.6)', marginTop: 0, marginBottom: 0 }}>
+          Corner radius scale tokens for consistent rounded corners across components and surfaces.
         </p>
       </section>
 
-      <section
-        style={{
-          padding: '32px',
-          backgroundColor: '#fafafa',
-          borderRadius: '8px',
-          border: '1px solid rgba(0,0,0,0.08)',
-        }}
-      >
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '200px 1fr 120px',
-          gap: '24px',
-          fontSize: '14px',
-        }}>
+      {/* Border Radius Scale */}
+      <section>
+        <h3 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '20px', marginTop: 0, color: 'rgba(0,0,0,0.9)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+          Border Radius Scale
+        </h3>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
           {[
-            { name: '--radi-1', value: '0px' },
-            { name: '--radi-2', value: '2px' },
-            { name: '--radi-3', value: '4px' },
-            { name: '--radi-4', value: '6px' },
-            { name: '--radi-5', value: '8px' },
-            { name: '--radi-6', value: '12px' },
-            { name: '--radi-7', value: '16px' },
-            { name: '--radi-8', value: '20px' },
-            { name: '--radi-9', value: '24px' },
-            { name: '--radi-10', value: '28px' },
-            { name: '--radi-11', value: '32px' },
-            { name: '--radi-12', value: '40px' },
-            { name: '--radi-13', value: '48px' },
-            { name: '--radi-14', value: '56px' },
-            { name: '--radi-15', value: '64px' },
+            { name: 'radi-1', value: '0px', label: 'None', usage: 'Sharp corners, no radius', size: 'small' },
+            { name: 'radi-2', value: '2px', label: 'Extra Small', usage: 'Very subtle rounding', size: 'small' },
+            { name: 'radi-3', value: '4px', label: 'Small', usage: 'Badges, tags, small elements', size: 'small' },
+            { name: 'radi-4', value: '6px', label: 'Medium', usage: 'Buttons, inputs, cards', size: 'medium' },
+            { name: 'radi-5', value: '8px', label: 'Large', usage: 'Panels, modals, large cards', size: 'medium' },
+            { name: 'radi-6', value: '12px', label: 'Extra Large', usage: 'Feature cards, containers', size: 'medium' },
+            { name: 'radi-7', value: '16px', label: '2XL', usage: 'Large containers, sections', size: 'large' },
+            { name: 'radi-8', value: '20px', label: '3XL', usage: 'Hero sections, major containers', size: 'large' },
+            { name: 'radi-9', value: '24px', label: '4XL', usage: 'Large surfaces, special elements', size: 'large' },
+            { name: 'radi-10', value: '28px', label: '5XL', usage: 'Extra large surfaces', size: 'large' },
+            { name: 'radi-11', value: '32px', label: '6XL', usage: 'Very large containers', size: 'large' },
+            { name: 'radi-12', value: '40px', label: '7XL', usage: 'Pill shapes, rounded containers', size: 'large' },
+            { name: 'radi-13', value: '48px', label: '8XL', usage: 'Large pill shapes', size: 'large' },
+            { name: 'radi-14', value: '56px', label: '9XL', usage: 'Extra large pill shapes', size: 'large' },
+            { name: 'radi-15', value: '64px', label: '10XL', usage: 'Full pill/circular elements', size: 'large' },
           ].map((token) => (
-            <React.Fragment key={token.name}>
+            <div
+              key={token.name}
+              style={{
+                padding: '20px 24px',
+                backgroundColor: '#fafafa',
+                borderBottom: '1px solid rgba(0,0,0,0.06)',
+                display: 'grid',
+                gridTemplateColumns: '140px 80px 200px 1fr',
+                gap: '24px',
+                alignItems: 'center',
+              }}
+            >
+              {/* Token Name */}
+              <div>
+                <div style={{
+                  fontFamily: 'monospace',
+                  fontSize: '11px',
+                  color: 'rgba(0,0,0,0.9)',
+                  fontWeight: '500',
+                  marginBottom: '4px',
+                }}>
+                  {token.name}
+                </div>
+                <div style={{
+                  fontSize: '11px',
+                  color: 'rgba(0,0,0,0.5)',
+                }}>
+                  {token.value} · {token.label}
+                </div>
+              </div>
+
+              {/* Visual Examples - Different Sizes */}
               <div style={{
-                fontFamily: 'monospace',
-                fontSize: '13px',
-                color: '#0066cc',
+                display: 'flex',
+                gap: '8px',
+                alignItems: 'flex-end',
+              }}>
+                {/* Small square */}
+                <div style={{
+                  width: '32px',
+                  height: '32px',
+                  backgroundColor: '#2170F0',
+                  borderRadius: token.value,
+                  flexShrink: 0,
+                }} />
+                {/* Medium square */}
+                {token.size !== 'small' && (
+                  <div style={{
+                    width: '48px',
+                    height: '48px',
+                    backgroundColor: '#3B8AFF',
+                    borderRadius: token.value,
+                    flexShrink: 0,
+                  }} />
+                )}
+                {/* Large rectangle */}
+                {token.size === 'large' && (
+                  <div style={{
+                    width: '64px',
+                    height: '40px',
+                    backgroundColor: '#61A1FF',
+                    borderRadius: token.value,
+                    flexShrink: 0,
+                  }} />
+                )}
+              </div>
+
+              {/* Rectangle Example */}
+              <div style={{
+                height: '40px',
+                backgroundColor: 'rgba(33, 112, 240, 0.1)',
+                border: '1px solid #2170F0',
+                borderRadius: token.value,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '11px',
+                color: '#2170F0',
                 fontWeight: '500',
               }}>
-                {token.name}
+                {token.value} radius
+              </div>
+
+              {/* Usage */}
+              <div style={{
+                fontSize: '11px',
+                color: 'rgba(0,0,0,0.6)',
+                lineHeight: '1.4',
+              }}>
+                {token.usage}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Usage Examples */}
+      <section>
+        <h3 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '20px', marginTop: 0, color: 'rgba(0,0,0,0.9)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+          Common Usage
+        </h3>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '16px',
+        }}>
+          {[
+            {
+              title: 'Buttons & Inputs',
+              radius: '6px',
+              token: 'radi-4',
+              description: 'Standard radius for interactive elements',
+            },
+            {
+              title: 'Cards & Panels',
+              radius: '8px',
+              token: 'radi-5',
+              description: 'Containers and content surfaces',
+            },
+            {
+              title: 'Modals & Dialogs',
+              radius: '12px',
+              token: 'radi-6',
+              description: 'Larger surface containers',
+            },
+            {
+              title: 'Badges & Pills',
+              radius: '40px',
+              token: 'radi-12',
+              description: 'Fully rounded pill shapes',
+            },
+          ].map((example) => (
+            <div
+              key={example.title}
+              style={{
+                padding: '20px',
+                backgroundColor: '#fafafa',
+                borderRadius: '8px',
+                border: '1px solid rgba(0,0,0,0.08)',
+              }}
+            >
+              <div style={{
+                marginBottom: '16px',
+                padding: '32px',
+                backgroundColor: '#ffffff',
+                borderRadius: example.radius,
+                border: '2px solid #2170F0',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <div style={{
+                  fontSize: '13px',
+                  color: '#2170F0',
+                  fontWeight: '500',
+                }}>
+                  {example.radius}
+                </div>
               </div>
               <div style={{
                 fontSize: '13px',
-                color: 'rgba(0,0,0,0.7)',
-                fontFamily: 'monospace',
+                fontWeight: '600',
+                color: 'rgba(0,0,0,0.9)',
+                marginBottom: '4px',
               }}>
-                {token.value}
+                {example.title}
               </div>
               <div style={{
-                width: '80px',
-                height: '80px',
-                backgroundColor: '#0066cc',
-                borderRadius: token.value,
-                border: '1px solid rgba(0,0,0,0.08)',
-              }} />
-            </React.Fragment>
+                fontSize: '11px',
+                color: 'rgba(0,0,0,0.5)',
+                fontFamily: 'monospace',
+                marginBottom: '8px',
+              }}>
+                {example.token} ({example.radius})
+              </div>
+              <div style={{
+                fontSize: '11px',
+                color: 'rgba(0,0,0,0.6)',
+                lineHeight: '1.4',
+              }}>
+                {example.description}
+              </div>
+            </div>
           ))}
         </div>
       </section>
