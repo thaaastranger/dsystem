@@ -5,7 +5,7 @@ import { ReactNode, HTMLAttributes } from 'react';
  */
 export interface SidebarItem {
   label: string;
-  icon: string;
+  icon: ReactNode;
   href?: string;
 }
 
@@ -16,6 +16,7 @@ export interface Tab {
   label: string;
   active: boolean;
   href?: string;
+  onClick?: () => void;
 }
 
 /**

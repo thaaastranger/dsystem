@@ -1,5 +1,16 @@
 import React from 'react';
 import { PanelProps } from './Panel.types';
+import {
+  ChevronRight,
+  MoreVertical,
+  Activity,
+  BookOpen,
+  Box,
+  Users,
+  Settings,
+  Phone,
+  ChevronLeft
+} from 'lucide-react';
 import styles from './Panel.module.css';
 
 /**
@@ -8,21 +19,6 @@ import styles from './Panel.module.css';
  * Based on Figma design node-id=4-500
  */
 
-// Icon components
-const ChevronRightIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const MenuIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <circle cx="8" cy="3" r="1" fill="currentColor" />
-    <circle cx="8" cy="8" r="1" fill="currentColor" />
-    <circle cx="8" cy="13" r="1" fill="currentColor" />
-  </svg>
-);
-
 export const Panel: React.FC<PanelProps> = ({
   title = 'Northway Fleet Operations Platform',
   breadcrumb = ['Components', 'Button'],
@@ -30,14 +26,15 @@ export const Panel: React.FC<PanelProps> = ({
     { label: 'Overview', active: true },
     { label: 'Usage', active: false },
     { label: 'Code', active: false },
+    { label: 'Specs', active: false },
     { label: 'Changelog', active: false },
   ],
   sidebarItems = [
-    { label: 'Status', icon: '📊' },
-    { label: 'Foundation', icon: '📚' },
-    { label: 'Components', icon: '🔧' },
-    { label: 'Members', icon: '👥' },
-    { label: 'Settings', icon: '⚙️' },
+    { label: 'Status', icon: <Activity size={20} /> },
+    { label: 'Foundation', icon: <BookOpen size={20} /> },
+    { label: 'Components', icon: <Box size={20} /> },
+    { label: 'Members', icon: <Users size={20} /> },
+    { label: 'Settings', icon: <Settings size={20} /> },
   ],
   children,
   className,
@@ -69,11 +66,13 @@ export const Panel: React.FC<PanelProps> = ({
         {/* Footer */}
         <div className={styles.sidebarFooter}>
           <div className={styles.helpSection}>
-            <span className={styles.helpIcon}>📞</span>
+            <span className={styles.helpIcon}>
+              <Phone size={16} />
+            </span>
             <span className={styles.helpText}>Help & Feedback</span>
           </div>
           <button className={styles.collapseButton} aria-label="Collapse sidebar">
-            <span>←</span>
+            <ChevronLeft size={16} />
           </button>
         </div>
       </aside>
@@ -89,7 +88,7 @@ export const Panel: React.FC<PanelProps> = ({
               </span>
               {index < breadcrumb.length - 1 && (
                 <span className={styles.breadcrumbSeparator}>
-                  <ChevronRightIcon />
+                  <ChevronRight size={16} />
                 </span>
               )}
             </React.Fragment>
@@ -100,7 +99,7 @@ export const Panel: React.FC<PanelProps> = ({
         <div className={styles.header}>
           <h1 className={styles.title}>{title}</h1>
           <button className={styles.menuButton} aria-label="More options">
-            <MenuIcon />
+            <MoreVertical size={16} />
           </button>
         </div>
 
@@ -110,6 +109,7 @@ export const Panel: React.FC<PanelProps> = ({
             <button
               key={index}
               className={tab.active ? styles.tabActive : styles.tab}
+              onClick={tab.onClick}
             >
               {tab.label}
             </button>
