@@ -13,23 +13,29 @@ export default defineConfig({
       '@/utils': path.resolve(__dirname, './src/utils'),
     },
   },
+  // Build configuration for demo app (comment out for library build)
   build: {
-    lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'DSystem',
-      formats: ['es'],
-      fileName: 'index',
-    },
-    rollupOptions: {
-      external: ['react', 'react-dom'],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
-      },
-    },
+    outDir: 'dist',
+    sourcemap: true,
   },
+  // Uncomment below for library build
+  // build: {
+  //   lib: {
+  //     entry: path.resolve(__dirname, 'src/index.ts'),
+  //     name: 'DSystem',
+  //     formats: ['es'],
+  //     fileName: 'index',
+  //   },
+  //   rollupOptions: {
+  //     external: ['react', 'react-dom'],
+  //     output: {
+  //       globals: {
+  //         react: 'React',
+  //         'react-dom': 'ReactDOM',
+  //       },
+  //     },
+  //   },
+  // },
   test: {
     globals: true,
     environment: 'jsdom',

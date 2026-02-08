@@ -18,7 +18,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:tokens && tsc && vite build",
+    "build": "npm run build:tokens && vite build",
+    "build:lib": "npm run build:tokens && tsc && vite build",
     "build:tokens": "tsx src/tokens/buildTokens.ts",
     "preview": "vite preview",
     "test": "vitest",
