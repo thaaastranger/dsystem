@@ -40,6 +40,11 @@
   align-items: center;
 }
 
+.sidebarCollapsed .sidebarHeader {
+  justify-content: center;
+  gap: 0;
+}
+
 .avatar {
   display: flex;
   align-items: center;
@@ -117,6 +122,12 @@
   opacity: 0.3;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+.sidebarCollapsed .navItem {
+  justify-content: center;
+  gap: 0;
+  padding: var(--padding-padding-3); /* 6px all sides */
 }
 
 .navIcon {
