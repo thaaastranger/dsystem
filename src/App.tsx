@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from './components/Button';
 import { Panel } from './components/Panel';
 import { AlertCircle, Star, Activity, BookOpen, Box, Users, Settings } from 'lucide-react';
+import { StatusPage } from './pages/StatusPage';
 import { ComponentsListPage } from './pages/ComponentsListPage';
 import { InputDetailPage } from './pages/InputDetailPage';
 import { FoundationPage } from './pages/FoundationPage';
@@ -319,9 +320,10 @@ interface ButtonDetailPageProps {
   onBreadcrumbClick: (index: number, label: string) => void;
   onNavigateToList: () => void;
   onNavigateToFoundation?: () => void;
+  onNavigateToStatus?: () => void;
 }
 
-const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack, onBreadcrumbClick, onNavigateToList, onNavigateToFoundation }) => {
+const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack, onBreadcrumbClick, onNavigateToList, onNavigateToFoundation, onNavigateToStatus }) => {
   const [activeTab, setActiveTab] = useState('Overview');
 
   const tabs = [
@@ -348,7 +350,7 @@ const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack, onBreadcrum
         onClick: () => handleTabClick(tab.label),
       }))}
       sidebarItems={[
-        { label: 'Status', icon: <Activity size={20} /> },
+        { label: 'Status', icon: <Activity size={20} />, onClick: onNavigateToStatus },
         { label: 'Foundation', icon: <BookOpen size={20} />, onClick: onNavigateToFoundation },
         { label: 'Components', icon: <Box size={20} />, active: true, onClick: onNavigateToList },
         { label: 'Members', icon: <Users size={20} /> },
@@ -455,7 +457,7 @@ const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack, onBreadcrum
 };
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'list' | 'button' | 'inputs' | 'foundation'>('list');
+  const [currentPage, setCurrentPage] = useState<'status' | 'list' | 'button' | 'inputs' | 'foundation'>('status');
 
   const handleComponentClick = (componentId: string) => {
     setCurrentPage(componentId as 'button' | 'inputs');
@@ -463,6 +465,10 @@ function App() {
 
   const handleBackToList = () => {
     setCurrentPage('list');
+  };
+
+  const handleNavigateToStatus = () => {
+    setCurrentPage('status');
   };
 
   const handleNavigateToFoundation = () => {
@@ -477,12 +483,23 @@ function App() {
   };
 
   // Render appropriate page based on current navigation state
+  if (currentPage === 'status') {
+    return (
+      <StatusPage
+        onNavigateToList={handleBackToList}
+        onNavigateToFoundation={handleNavigateToFoundation}
+        onNavigateToStatus={handleNavigateToStatus}
+      />
+    );
+  }
+
   if (currentPage === 'list') {
     return (
       <ComponentsListPage
         onComponentClick={handleComponentClick}
         onNavigateToList={handleBackToList}
         onNavigateToFoundation={handleNavigateToFoundation}
+        onNavigateToStatus={handleNavigateToStatus}
       />
     );
   }
@@ -491,6 +508,7 @@ function App() {
     return (
       <FoundationPage
         onNavigateToList={handleBackToList}
+        onNavigateToStatus={handleNavigateToStatus}
       />
     );
   }
@@ -502,6 +520,7 @@ function App() {
         onBreadcrumbClick={handleBreadcrumbClick}
         onNavigateToList={handleBackToList}
         onNavigateToFoundation={handleNavigateToFoundation}
+        onNavigateToStatus={handleNavigateToStatus}
       />
     );
   }
@@ -513,15 +532,17 @@ function App() {
         onBreadcrumbClick={handleBreadcrumbClick}
         onNavigateToList={handleBackToList}
         onNavigateToFoundation={handleNavigateToFoundation}
+        onNavigateToStatus={handleNavigateToStatus}
       />
     );
   }
 
-  // Default fallback
+  // Default fallback to status page
   return (
-    <ComponentsListPage
-      onComponentClick={handleComponentClick}
+    <StatusPage
       onNavigateToList={handleBackToList}
+      onNavigateToFoundation={handleNavigateToFoundation}
+      onNavigateToStatus={handleNavigateToStatus}
     />
   );
 }

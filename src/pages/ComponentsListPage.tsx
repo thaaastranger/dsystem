@@ -15,12 +15,14 @@ interface ComponentsListPageProps {
   onComponentClick: (componentId: string) => void;
   onNavigateToList: () => void;
   onNavigateToFoundation?: () => void;
+  onNavigateToStatus?: () => void;
 }
 
 export const ComponentsListPage: React.FC<ComponentsListPageProps> = ({
   onComponentClick,
   onNavigateToList,
   onNavigateToFoundation,
+  onNavigateToStatus,
 }) => {
   // Define available components
   const components = [
@@ -57,7 +59,7 @@ export const ComponentsListPage: React.FC<ComponentsListPageProps> = ({
         { label: 'Overview', active: true },
       ]}
       sidebarItems={[
-        { label: 'Status', icon: <Activity size={20} /> },
+        { label: 'Status', icon: <Activity size={20} />, onClick: onNavigateToStatus },
         { label: 'Foundation', icon: <BookOpen size={20} />, onClick: onNavigateToFoundation },
         { label: 'Components', icon: <Box size={20} />, active: true, onClick: onNavigateToList },
         { label: 'Members', icon: <Users size={20} /> },

@@ -9,9 +9,10 @@ import { Activity, BookOpen, Box, Users, Settings } from 'lucide-react';
 
 interface FoundationPageProps {
   onNavigateToList: () => void;
+  onNavigateToStatus?: () => void;
 }
 
-export const FoundationPage: React.FC<FoundationPageProps> = ({ onNavigateToList }) => {
+export const FoundationPage: React.FC<FoundationPageProps> = ({ onNavigateToList, onNavigateToStatus }) => {
   const [activeTab, setActiveTab] = useState('Spacing');
 
   const tabs = [
@@ -935,7 +936,7 @@ export const FoundationPage: React.FC<FoundationPageProps> = ({ onNavigateToList
         onClick: () => handleTabClick(tab.label),
       }))}
       sidebarItems={[
-        { label: 'Status', icon: <Activity size={20} /> },
+        { label: 'Status', icon: <Activity size={20} />, onClick: onNavigateToStatus },
         { label: 'Foundation', icon: <BookOpen size={20} />, active: true },
         { label: 'Components', icon: <Box size={20} />, onClick: onNavigateToList },
         { label: 'Members', icon: <Users size={20} /> },
