@@ -22,6 +22,7 @@ import styles from './Panel.module.css';
 export const Panel: React.FC<PanelProps> = ({
   title = 'Northway Fleet Operations Platform',
   breadcrumb = ['Components', 'Button'],
+  onBreadcrumbClick,
   tabs = [
     { label: 'Overview', active: true },
     { label: 'Usage', active: false },
@@ -32,7 +33,7 @@ export const Panel: React.FC<PanelProps> = ({
   sidebarItems = [
     { label: 'Status', icon: <Activity size={20} /> },
     { label: 'Foundation', icon: <BookOpen size={20} /> },
-    { label: 'Components', icon: <Box size={20} /> },
+    { label: 'Components', icon: <Box size={20} />, active: false },
     { label: 'Members', icon: <Users size={20} /> },
     { label: 'Settings', icon: <Settings size={20} /> },
   ],
@@ -56,10 +57,14 @@ export const Panel: React.FC<PanelProps> = ({
         {/* Navigation */}
         <nav className={styles.sidebarNav}>
           {sidebarItems.map((item, index) => (
-            <a key={index} href="#" className={styles.navItem}>
+            <button
+              key={index}
+              className={`${styles.navItem} ${item.active ? styles.navItemActive : ''}`}
+              onClick={item.onClick}
+            >
               <span className={styles.navIcon}>{item.icon}</span>
               <span className={styles.navLabel}>{item.label}</span>
-            </a>
+            </button>
           ))}
         </nav>
 
@@ -83,9 +88,18 @@ export const Panel: React.FC<PanelProps> = ({
         <div className={styles.breadcrumb}>
           {breadcrumb.map((item, index) => (
             <React.Fragment key={index}>
-              <span className={index === breadcrumb.length - 1 ? styles.breadcrumbInactive : styles.breadcrumbActive}>
-                {item}
-              </span>
+              {index === breadcrumb.length - 1 ? (
+                <span className={styles.breadcrumbInactive}>
+                  {item}
+                </span>
+              ) : (
+                <button
+                  className={styles.breadcrumbActive}
+                  onClick={() => onBreadcrumbClick?.(index, item)}
+                >
+                  {item}
+                </button>
+              )}
               {index < breadcrumb.length - 1 && (
                 <span className={styles.breadcrumbSeparator}>
                   <ChevronRight size={16} />

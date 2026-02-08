@@ -7,6 +7,8 @@ export interface SidebarItem {
   label: string;
   icon: ReactNode;
   href?: string;
+  active?: boolean;
+  onClick?: () => void;
 }
 
 /**
@@ -33,6 +35,11 @@ export interface PanelProps extends HTMLAttributes<HTMLDivElement> {
    * Breadcrumb navigation items
    */
   breadcrumb?: string[];
+
+  /**
+   * Callback when breadcrumb item is clicked
+   */
+  onBreadcrumbClick?: (index: number, label: string) => void;
 
   /**
    * Tab navigation items

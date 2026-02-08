@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from './components/Button';
 import { Panel } from './components/Panel';
-import { AlertCircle, Star } from 'lucide-react';
+import { AlertCircle, Star, Activity, BookOpen, Box, Users, Settings } from 'lucide-react';
 import { ComponentsListPage } from './pages/ComponentsListPage';
 import { InputDetailPage } from './pages/InputDetailPage';
 import './tokens/tokens.css';
@@ -315,9 +315,11 @@ const OverviewView = () => (
 // Button Detail Page component
 interface ButtonDetailPageProps {
   onBack: () => void;
+  onBreadcrumbClick: (index: number, label: string) => void;
+  onNavigateToList: () => void;
 }
 
-const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack }) => {
+const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack, onBreadcrumbClick, onNavigateToList }) => {
   const [activeTab, setActiveTab] = useState('Overview');
 
   const tabs = [
@@ -338,10 +340,18 @@ const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack }) => {
     <Panel
       title="Button Component"
       breadcrumb={breadcrumbItems}
+      onBreadcrumbClick={onBreadcrumbClick}
       tabs={tabs.map((tab) => ({
         ...tab,
         onClick: () => handleTabClick(tab.label),
       }))}
+      sidebarItems={[
+        { label: 'Status', icon: <Activity size={20} /> },
+        { label: 'Foundation', icon: <BookOpen size={20} /> },
+        { label: 'Components', icon: <Box size={20} />, active: true, onClick: onNavigateToList },
+        { label: 'Members', icon: <Users size={20} /> },
+        { label: 'Settings', icon: <Settings size={20} /> },
+      ]}
     >
       {activeTab === 'Overview' && <OverviewView />}
       {activeTab === 'Specs' && <SpecsView />}
@@ -375,21 +385,50 @@ function App() {
     setCurrentPage('list');
   };
 
+  const handleBreadcrumbClick = (index: number, label: string) => {
+    // If clicking on "Components" in breadcrumb, go back to list
+    if (label === 'Components') {
+      setCurrentPage('list');
+    }
+  };
+
   // Render appropriate page based on current navigation state
   if (currentPage === 'list') {
-    return <ComponentsListPage onComponentClick={handleComponentClick} />;
+    return (
+      <ComponentsListPage
+        onComponentClick={handleComponentClick}
+        onNavigateToList={handleBackToList}
+      />
+    );
   }
 
   if (currentPage === 'button') {
-    return <ButtonDetailPage onBack={handleBackToList} />;
+    return (
+      <ButtonDetailPage
+        onBack={handleBackToList}
+        onBreadcrumbClick={handleBreadcrumbClick}
+        onNavigateToList={handleBackToList}
+      />
+    );
   }
 
   if (currentPage === 'inputs') {
-    return <InputDetailPage onBack={handleBackToList} />;
+    return (
+      <InputDetailPage
+        onBack={handleBackToList}
+        onBreadcrumbClick={handleBreadcrumbClick}
+        onNavigateToList={handleBackToList}
+      />
+    );
   }
 
   // Default fallback
-  return <ComponentsListPage onComponentClick={handleComponentClick} />;
+  return (
+    <ComponentsListPage
+      onComponentClick={handleComponentClick}
+      onNavigateToList={handleBackToList}
+    />
+  );
 }
 
 export default App;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Panel } from '../components/Panel';
 import { Input } from '../components/Input';
-import { Mail, Lock, Search, User, Info } from 'lucide-react';
+import { Mail, Lock, Search, User, Info, Activity, BookOpen, Box, Users, Settings } from 'lucide-react';
 
 /**
  * Input Detail Page
@@ -10,9 +10,11 @@ import { Mail, Lock, Search, User, Info } from 'lucide-react';
 
 interface InputDetailPageProps {
   onBack: () => void;
+  onBreadcrumbClick: (index: number, label: string) => void;
+  onNavigateToList: () => void;
 }
 
-export const InputDetailPage: React.FC<InputDetailPageProps> = ({ onBack }) => {
+export const InputDetailPage: React.FC<InputDetailPageProps> = ({ onBack, onBreadcrumbClick, onNavigateToList }) => {
   const [activeTab, setActiveTab] = useState('Overview');
 
   const tabs = [
@@ -287,10 +289,18 @@ export const InputDetailPage: React.FC<InputDetailPageProps> = ({ onBack }) => {
     <Panel
       title="Input Component"
       breadcrumb={['Components', 'Input']}
+      onBreadcrumbClick={onBreadcrumbClick}
       tabs={tabs.map((tab) => ({
         ...tab,
         onClick: () => handleTabClick(tab.label),
       }))}
+      sidebarItems={[
+        { label: 'Status', icon: <Activity size={20} /> },
+        { label: 'Foundation', icon: <BookOpen size={20} /> },
+        { label: 'Components', icon: <Box size={20} />, active: true, onClick: onNavigateToList },
+        { label: 'Members', icon: <Users size={20} /> },
+        { label: 'Settings', icon: <Settings size={20} /> },
+      ]}
     >
       {activeTab === 'Overview' && <OverviewView />}
       {activeTab === 'Specs' && <SpecsView />}
