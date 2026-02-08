@@ -314,7 +314,7 @@ export const FoundationPage: React.FC<FoundationPageProps> = ({ onNavigateToList
           Color Tokens
         </h2>
         <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.7)', marginTop: 0, marginBottom: '32px' }}>
-          Color scales for consistent color usage across the design system.
+          Color scales, semantic tokens, and state layers for consistent color usage across the design system.
         </p>
       </section>
 
@@ -453,46 +453,29 @@ export const FoundationPage: React.FC<FoundationPageProps> = ({ onNavigateToList
           </div>
         </section>
       ))}
-    </div>
-  );
 
-  // Component Tokens view
-  const ComponentTokensView = () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
-      <section>
-        <h2 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '16px', marginTop: 0 }}>
-          Component Tokens
-        </h2>
-        <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.7)', marginTop: 0, marginBottom: '32px' }}>
-          Component-specific and semantic tokens for consistent component styling.
+      {/* Semantic Tokens */}
+      <section
+        style={{
+          padding: '32px',
+          backgroundColor: '#fafafa',
+          borderRadius: '8px',
+          border: '1px solid rgba(0,0,0,0.08)',
+        }}
+      >
+        <h3 style={{ fontSize: '16px', fontWeight: '500', marginTop: 0, marginBottom: '8px' }}>
+          Semantic Tokens
+        </h3>
+        <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.6)', marginTop: 0, marginBottom: '24px' }}>
+          Context-aware color tokens
         </p>
-      </section>
 
-      {[
-        {
-          title: 'Button Tokens',
-          description: 'Button component specific color tokens',
-          tokens: [
-            { name: '--button-fill-enabled', value: '#000000' },
-            { name: '--button-fill-hovered', value: '#333333' },
-            { name: '--button-fill-pressed', value: '#4D4D4D' },
-            { name: '--button-fill-disabled', value: '#DBDBDB' },
-            { name: '--button-fill-label-enabled', value: '#FFFFFF' },
-            { name: '--button-fill-label-disabled', value: '#BABABA' },
-            { name: '--button-outline-stroke-enabled', value: '#000000' },
-            { name: '--button-outline-stroke-hovered', value: '#333333' },
-            { name: '--button-outline-stroke-pressed', value: '#4D4D4D' },
-            { name: '--button-outline-stroke-disabled', value: '#DBDBDB' },
-            { name: '--button-outline-label-enabled', value: '#000000' },
-            { name: '--button-outline-label-disabled', value: '#BABABA' },
-            { name: '--button-text-only-label-enabled', value: '#000000' },
-            { name: '--button-text-only-label-disabled', value: '#BABABA' },
-          ],
-        },
-        {
-          title: 'Semantic Tokens',
-          description: 'Context-aware color tokens',
-          tokens: [
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+          gap: '16px',
+        }}>
+          {[
             { name: '--foreground-inverseprimary', value: '#000000' },
             { name: '--foreground-secondary', value: '#F7F7F7' },
             { name: '--foreground-inversetertiary', value: '#8F8F8F' },
@@ -505,60 +488,35 @@ export const FoundationPage: React.FC<FoundationPageProps> = ({ onNavigateToList
             { name: '--semantic-error', value: '#CC3333' },
             { name: '--semantic-success', value: '#2E976E' },
             { name: '--semantic-warning', value: '#E09E1F' },
-          ],
-        },
-      ].map((category) => (
-        <section
-          key={category.title}
-          style={{
-            padding: '32px',
-            backgroundColor: '#fafafa',
-            borderRadius: '8px',
-            border: '1px solid rgba(0,0,0,0.08)',
-          }}
-        >
-          <h3 style={{ fontSize: '16px', fontWeight: '500', marginTop: 0, marginBottom: '8px' }}>
-            {category.title}
-          </h3>
-          <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.6)', marginTop: 0, marginBottom: '24px' }}>
-            {category.description}
-          </p>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-            gap: '16px',
-          }}>
-            {category.tokens.map((token) => (
-              <div key={token.name} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <div style={{
-                  width: '100%',
-                  height: '80px',
-                  backgroundColor: token.value,
-                  borderRadius: '6px',
-                  border: '1px solid rgba(0,0,0,0.08)',
-                }} />
-                <div style={{
-                  fontFamily: 'monospace',
-                  fontSize: '13px',
-                  color: '#0066cc',
-                  fontWeight: '500',
-                  marginBottom: '4px',
-                }}>
-                  {token.name}
-                </div>
-                <div style={{
-                  fontSize: '12px',
-                  color: 'rgba(0,0,0,0.5)',
-                  fontFamily: 'monospace',
-                }}>
-                  {token.value}
-                </div>
+          ].map((token) => (
+            <div key={token.name} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <div style={{
+                width: '100%',
+                height: '80px',
+                backgroundColor: token.value,
+                borderRadius: '6px',
+                border: '1px solid rgba(0,0,0,0.08)',
+              }} />
+              <div style={{
+                fontFamily: 'monospace',
+                fontSize: '13px',
+                color: '#0066cc',
+                fontWeight: '500',
+                marginBottom: '4px',
+              }}>
+                {token.name}
               </div>
-            ))}
-          </div>
-        </section>
-      ))}
+              <div style={{
+                fontSize: '12px',
+                color: 'rgba(0,0,0,0.5)',
+                fontFamily: 'monospace',
+              }}>
+                {token.value}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* State Layers */}
       <section
@@ -603,6 +561,326 @@ export const FoundationPage: React.FC<FoundationPageProps> = ({ onNavigateToList
                 {token.value}
               </div>
             </React.Fragment>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+
+  // Component Tokens view
+  const ComponentTokensView = () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+      <section>
+        <h2 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '16px', marginTop: 0 }}>
+          Component Tokens
+        </h2>
+        <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.7)', marginTop: 0, marginBottom: '32px' }}>
+          All design tokens used by component implementations. Includes spacing, typography, colors, and other properties.
+        </p>
+      </section>
+
+      {/* Button Component */}
+      <section
+        style={{
+          padding: '32px',
+          backgroundColor: '#fafafa',
+          borderRadius: '8px',
+          border: '1px solid rgba(0,0,0,0.08)',
+        }}
+      >
+        <h3 style={{ fontSize: '16px', fontWeight: '500', marginTop: 0, marginBottom: '8px' }}>
+          Button Component
+        </h3>
+        <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.6)', marginTop: 0, marginBottom: '24px' }}>
+          All tokens used in Button component implementation
+        </p>
+
+        {/* Spacing */}
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginTop: 0, marginBottom: '16px', color: 'rgba(0,0,0,0.8)' }}>
+          Spacing
+        </h4>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '200px 1fr',
+          gap: '12px 24px',
+          fontSize: '14px',
+          marginBottom: '32px',
+        }}>
+          {[
+            { name: '--padding-padding-6', value: '12px', description: 'Padding X' },
+            { name: '--padding-padding-3', value: '6px', description: 'Padding Y' },
+            { name: '--padding-padding-2', value: '4px', description: 'Icon Gap' },
+          ].map((token) => (
+            <React.Fragment key={token.name}>
+              <div style={{ color: 'rgba(0,0,0,0.7)' }}>{token.description}</div>
+              <div style={{ fontFamily: 'monospace', fontSize: '13px', color: '#0066cc', fontWeight: '500' }}>
+                {token.name} <span style={{ color: 'rgba(0,0,0,0.5)', fontWeight: '400' }}>({token.value})</span>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+
+        {/* Border Radius */}
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginTop: 0, marginBottom: '16px', color: 'rgba(0,0,0,0.8)' }}>
+          Border Radius
+        </h4>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '200px 1fr',
+          gap: '12px 24px',
+          fontSize: '14px',
+          marginBottom: '32px',
+        }}>
+          <div style={{ color: 'rgba(0,0,0,0.7)' }}>Border Radius</div>
+          <div style={{ fontFamily: 'monospace', fontSize: '13px', color: '#0066cc', fontWeight: '500' }}>
+            --radi-4 <span style={{ color: 'rgba(0,0,0,0.5)', fontWeight: '400' }}>(6px)</span>
+          </div>
+        </div>
+
+        {/* Typography */}
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginTop: 0, marginBottom: '16px', color: 'rgba(0,0,0,0.8)' }}>
+          Typography
+        </h4>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '200px 1fr',
+          gap: '12px 24px',
+          fontSize: '14px',
+          marginBottom: '32px',
+        }}>
+          {[
+            { name: '--typography-fontFamily-inter', value: 'Inter', description: 'Font Family' },
+            { name: '--typography-fontSize-14', value: '14px', description: 'Font Size' },
+            { name: 'Font Weight: 500', value: 'Medium', description: 'Font Weight' },
+          ].map((token, idx) => (
+            <React.Fragment key={idx}>
+              <div style={{ color: 'rgba(0,0,0,0.7)' }}>{token.description}</div>
+              <div style={{ fontFamily: 'monospace', fontSize: '13px', color: '#0066cc', fontWeight: '500' }}>
+                {token.name} <span style={{ color: 'rgba(0,0,0,0.5)', fontWeight: '400' }}>({token.value})</span>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+
+        {/* Size & Layout */}
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginTop: 0, marginBottom: '16px', color: 'rgba(0,0,0,0.8)' }}>
+          Size & Layout
+        </h4>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '200px 1fr',
+          gap: '12px 24px',
+          fontSize: '14px',
+          marginBottom: '32px',
+        }}>
+          {[
+            { name: 'Min Height: 32px', value: '32px', description: 'Minimum Height' },
+            { name: 'Icon Size: 20px', value: '20px', description: 'Icon Size' },
+          ].map((token, idx) => (
+            <React.Fragment key={idx}>
+              <div style={{ color: 'rgba(0,0,0,0.7)' }}>{token.description}</div>
+              <div style={{ fontFamily: 'monospace', fontSize: '13px', color: '#0066cc', fontWeight: '500' }}>
+                {token.name}
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+
+        {/* Colors */}
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginTop: 0, marginBottom: '16px', color: 'rgba(0,0,0,0.8)' }}>
+          Colors
+        </h4>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+          gap: '16px',
+        }}>
+          {[
+            { name: '--button-fill-enabled', value: '#000000' },
+            { name: '--button-fill-hovered', value: '#333333' },
+            { name: '--button-fill-pressed', value: '#4D4D4D' },
+            { name: '--button-fill-disabled', value: '#DBDBDB' },
+            { name: '--button-fill-label-enabled', value: '#FFFFFF' },
+            { name: '--button-fill-label-disabled', value: '#BABABA' },
+            { name: '--button-outline-stroke-enabled', value: '#000000' },
+            { name: '--button-outline-stroke-hovered', value: '#333333' },
+            { name: '--button-outline-stroke-pressed', value: '#4D4D4D' },
+            { name: '--button-outline-stroke-disabled', value: '#DBDBDB' },
+            { name: '--button-outline-label-enabled', value: '#000000' },
+            { name: '--button-outline-label-disabled', value: '#BABABA' },
+            { name: '--button-text-only-label-enabled', value: '#000000' },
+            { name: '--button-text-only-label-disabled', value: '#BABABA' },
+          ].map((token) => (
+            <div key={token.name} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <div style={{
+                width: '100%',
+                height: '60px',
+                backgroundColor: token.value,
+                borderRadius: '6px',
+                border: '1px solid rgba(0,0,0,0.08)',
+              }} />
+              <div style={{
+                fontFamily: 'monospace',
+                fontSize: '12px',
+                color: '#0066cc',
+                fontWeight: '500',
+                marginBottom: '4px',
+              }}>
+                {token.name}
+              </div>
+              <div style={{
+                fontSize: '11px',
+                color: 'rgba(0,0,0,0.5)',
+                fontFamily: 'monospace',
+              }}>
+                {token.value}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Input Component */}
+      <section
+        style={{
+          padding: '32px',
+          backgroundColor: '#fafafa',
+          borderRadius: '8px',
+          border: '1px solid rgba(0,0,0,0.08)',
+        }}
+      >
+        <h3 style={{ fontSize: '16px', fontWeight: '500', marginTop: 0, marginBottom: '8px' }}>
+          Input Component
+        </h3>
+        <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.6)', marginTop: 0, marginBottom: '24px' }}>
+          All tokens used in Input component implementation
+        </p>
+
+        {/* Spacing */}
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginTop: 0, marginBottom: '16px', color: 'rgba(0,0,0,0.8)' }}>
+          Spacing
+        </h4>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '200px 1fr',
+          gap: '12px 24px',
+          fontSize: '14px',
+          marginBottom: '32px',
+        }}>
+          {[
+            { name: '--padding-padding-4', value: '8px', description: 'Padding' },
+            { name: '--padding-padding-3', value: '6px', description: 'Icon Gap' },
+          ].map((token) => (
+            <React.Fragment key={token.name}>
+              <div style={{ color: 'rgba(0,0,0,0.7)' }}>{token.description}</div>
+              <div style={{ fontFamily: 'monospace', fontSize: '13px', color: '#0066cc', fontWeight: '500' }}>
+                {token.name} <span style={{ color: 'rgba(0,0,0,0.5)', fontWeight: '400' }}>({token.value})</span>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+
+        {/* Border Radius */}
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginTop: 0, marginBottom: '16px', color: 'rgba(0,0,0,0.8)' }}>
+          Border Radius
+        </h4>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '200px 1fr',
+          gap: '12px 24px',
+          fontSize: '14px',
+          marginBottom: '32px',
+        }}>
+          <div style={{ color: 'rgba(0,0,0,0.7)' }}>Border Radius</div>
+          <div style={{ fontFamily: 'monospace', fontSize: '13px', color: '#0066cc', fontWeight: '500' }}>
+            --radi-4 <span style={{ color: 'rgba(0,0,0,0.5)', fontWeight: '400' }}>(6px)</span>
+          </div>
+        </div>
+
+        {/* Typography */}
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginTop: 0, marginBottom: '16px', color: 'rgba(0,0,0,0.8)' }}>
+          Typography
+        </h4>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '200px 1fr',
+          gap: '12px 24px',
+          fontSize: '14px',
+          marginBottom: '32px',
+        }}>
+          {[
+            { name: '--typography-fontSize-14', value: '14px', description: 'Font Size (Input)' },
+            { name: '--typography-fontSize-12', value: '12px', description: 'Font Size (Label/Helper)' },
+          ].map((token) => (
+            <React.Fragment key={token.name}>
+              <div style={{ color: 'rgba(0,0,0,0.7)' }}>{token.description}</div>
+              <div style={{ fontFamily: 'monospace', fontSize: '13px', color: '#0066cc', fontWeight: '500' }}>
+                {token.name} <span style={{ color: 'rgba(0,0,0,0.5)', fontWeight: '400' }}>({token.value})</span>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+
+        {/* Size & Layout */}
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginTop: 0, marginBottom: '16px', color: 'rgba(0,0,0,0.8)' }}>
+          Size & Layout
+        </h4>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '200px 1fr',
+          gap: '12px 24px',
+          fontSize: '14px',
+          marginBottom: '32px',
+        }}>
+          <div style={{ color: 'rgba(0,0,0,0.7)' }}>Icon Size</div>
+          <div style={{ fontFamily: 'monospace', fontSize: '13px', color: '#0066cc', fontWeight: '500' }}>
+            16-20px
+          </div>
+        </div>
+
+        {/* Colors */}
+        <h4 style={{ fontSize: '14px', fontWeight: '500', marginTop: 0, marginBottom: '16px', color: 'rgba(0,0,0,0.8)' }}>
+          Colors
+        </h4>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+          gap: '16px',
+        }}>
+          {[
+            { name: '--foreground-secondary', value: '#F7F7F7' },
+            { name: '--foreground-disabled', value: '#BABABA' },
+            { name: '--background-disabled', value: '#EDEDED' },
+            { name: '--border-selected', value: '#000000' },
+            { name: '--fill-content', value: '#000000' },
+            { name: '--fill-contentdisabled', value: '#BABABA' },
+            { name: '--semantic-error', value: '#CC3333' },
+          ].map((token) => (
+            <div key={token.name} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <div style={{
+                width: '100%',
+                height: '60px',
+                backgroundColor: token.value,
+                borderRadius: '6px',
+                border: '1px solid rgba(0,0,0,0.08)',
+              }} />
+              <div style={{
+                fontFamily: 'monospace',
+                fontSize: '12px',
+                color: '#0066cc',
+                fontWeight: '500',
+                marginBottom: '4px',
+              }}>
+                {token.name}
+              </div>
+              <div style={{
+                fontSize: '11px',
+                color: 'rgba(0,0,0,0.5)',
+                fontFamily: 'monospace',
+              }}>
+                {token.value}
+              </div>
+            </div>
           ))}
         </div>
       </section>
