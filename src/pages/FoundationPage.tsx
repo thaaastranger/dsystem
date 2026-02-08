@@ -308,257 +308,296 @@ export const FoundationPage: React.FC<FoundationPageProps> = ({ onNavigateToList
 
   // Colors view
   const ColorsView = () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       <section>
-        <h2 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '16px', marginTop: 0 }}>
+        <h2 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '8px', marginTop: 0 }}>
           Color Tokens
         </h2>
-        <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.7)', marginTop: 0, marginBottom: '32px' }}>
+        <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.6)', marginTop: 0, marginBottom: 0 }}>
           Color scales, semantic tokens, and state layers for consistent color usage across the design system.
         </p>
       </section>
 
-      {[
-        {
-          title: 'Grey Scale',
-          description: 'Neutral color palette',
-          tokens: [
-            { name: '--raw-grey-white', value: '#FFFFFF' },
-            { name: '--raw-grey-grey-10', value: '#FFFFFF' },
-            { name: '--raw-grey-grey-20', value: '#F7F7F7' },
-            { name: '--raw-grey-grey-30', value: '#EDEDED' },
-            { name: '--raw-grey-grey-40', value: '#DBDBDB' },
-            { name: '--raw-grey-grey-50', value: '#BABABA' },
-            { name: '--raw-grey-grey-60', value: '#8F8F8F' },
-            { name: '--raw-grey-grey-70', value: '#6B6B6B' },
-            { name: '--raw-grey-grey-80', value: '#4D4D4D' },
-            { name: '--raw-grey-grey-90', value: '#333333' },
-            { name: '--raw-grey-grey-100', value: '#141414' },
-            { name: '--raw-grey-black', value: '#000000' },
-          ],
-        },
-        {
-          title: 'Blue',
-          description: 'Primary blue color scale',
-          tokens: [
-            { name: '--raw-blue-blue-10', value: '#EDF4FF' },
-            { name: '--raw-blue-blue-20', value: '#CCE0FF' },
-            { name: '--raw-blue-blue-30', value: '#99C2FF' },
-            { name: '--raw-blue-blue-40', value: '#61A1FF' },
-            { name: '--raw-blue-blue-50', value: '#3B8AFF' },
-            { name: '--raw-blue-blue-60', value: '#2170F0' },
-            { name: '--raw-blue-blue-70', value: '#1959C7' },
-            { name: '--raw-blue-blue-80', value: '#134699' },
-            { name: '--raw-blue-blue-90', value: '#0D2E6B' },
-            { name: '--raw-blue-blue-100', value: '#081D47' },
-          ],
-        },
-        {
-          title: 'Green',
-          description: 'Success green color scale',
-          tokens: [
-            { name: '--raw-green-green-10', value: '#EEFAF3' },
-            { name: '--raw-green-green-20', value: '#C7F0DB' },
-            { name: '--raw-green-green-30', value: '#94DEB9' },
-            { name: '--raw-green-green-40', value: '#61C796' },
-            { name: '--raw-green-green-50', value: '#42B081' },
-            { name: '--raw-green-green-60', value: '#2E976E' },
-            { name: '--raw-green-green-70', value: '#217D5C' },
-            { name: '--raw-green-green-80', value: '#175F47' },
-            { name: '--raw-green-green-90', value: '#0F4333' },
-            { name: '--raw-green-green-100', value: '#092B21' },
-          ],
-        },
-        {
-          title: 'Red',
-          description: 'Error red color scale',
-          tokens: [
-            { name: '--raw-red-red-10', value: '#FFF0F0' },
-            { name: '--raw-red-red-20', value: '#FFD1D1' },
-            { name: '--raw-red-red-30', value: '#FFA3A3' },
-            { name: '--raw-red-red-40', value: '#F56F6F' },
-            { name: '--raw-red-red-50', value: '#E64D4D' },
-            { name: '--raw-red-red-60', value: '#CC3333' },
-            { name: '--raw-red-red-70', value: '#A32929' },
-            { name: '--raw-red-red-80', value: '#7D1F1F' },
-            { name: '--raw-red-red-90', value: '#571414' },
-            { name: '--raw-red-red-100', value: '#380D0D' },
-          ],
-        },
-        {
-          title: 'Yellow',
-          description: 'Warning yellow color scale',
-          tokens: [
-            { name: '--raw-yellow-yellow-10', value: '#FFF9EB' },
-            { name: '--raw-yellow-yellow-20', value: '#FFF0C7' },
-            { name: '--raw-yellow-yellow-30', value: '#FFE191' },
-            { name: '--raw-yellow-yellow-40', value: '#FAD05C' },
-            { name: '--raw-yellow-yellow-50', value: '#F3B538' },
-            { name: '--raw-yellow-yellow-60', value: '#E09E1F' },
-            { name: '--raw-yellow-yellow-70', value: '#B87F17' },
-            { name: '--raw-yellow-yellow-80', value: '#896111' },
-            { name: '--raw-yellow-yellow-90', value: '#61440C' },
-            { name: '--raw-yellow-yellow-100', value: '#402E07' },
-          ],
-        },
-      ].map((category) => (
-        <section
-          key={category.title}
-          style={{
-            padding: '32px',
-            backgroundColor: '#fafafa',
-            borderRadius: '8px',
-            border: '1px solid rgba(0,0,0,0.08)',
-          }}
-        >
-          <h3 style={{ fontSize: '16px', fontWeight: '500', marginTop: 0, marginBottom: '8px' }}>
-            {category.title}
-          </h3>
-          <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.6)', marginTop: 0, marginBottom: '24px' }}>
-            {category.description}
-          </p>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-            gap: '16px',
-          }}>
-            {category.tokens.map((token) => (
-              <div key={token.name} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <div style={{
-                  width: '100%',
-                  height: '80px',
-                  backgroundColor: token.value,
-                  borderRadius: '6px',
-                  border: '1px solid rgba(0,0,0,0.08)',
-                }} />
-                <div style={{
-                  fontFamily: 'monospace',
-                  fontSize: '13px',
-                  color: '#0066cc',
-                  fontWeight: '500',
-                  marginBottom: '4px',
-                }}>
-                  {token.name}
-                </div>
-                <div style={{
-                  fontSize: '12px',
-                  color: 'rgba(0,0,0,0.5)',
-                  fontFamily: 'monospace',
-                }}>
-                  {token.value}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      ))}
-
-      {/* Semantic Tokens */}
-      <section
-        style={{
-          padding: '32px',
-          backgroundColor: '#fafafa',
-          borderRadius: '8px',
-          border: '1px solid rgba(0,0,0,0.08)',
-        }}
-      >
-        <h3 style={{ fontSize: '16px', fontWeight: '500', marginTop: 0, marginBottom: '8px' }}>
-          Semantic Tokens
+      {/* Color Scales */}
+      <section>
+        <h3 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '20px', marginTop: 0, color: 'rgba(0,0,0,0.9)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+          Color Scales
         </h3>
-        <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.6)', marginTop: 0, marginBottom: '24px' }}>
-          Context-aware color tokens
-        </p>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-          gap: '16px',
-        }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
           {[
-            { name: '--foreground-inverseprimary', value: '#000000' },
-            { name: '--foreground-secondary', value: '#F7F7F7' },
-            { name: '--foreground-inversetertiary', value: '#8F8F8F' },
-            { name: '--foreground-disabled', value: '#BABABA' },
-            { name: '--background-primary', value: '#000000' },
-            { name: '--background-disabled', value: '#EDEDED' },
-            { name: '--border-selected', value: '#000000' },
-            { name: '--fill-content', value: '#000000' },
-            { name: '--fill-contentdisabled', value: '#BABABA' },
-            { name: '--semantic-error', value: '#CC3333' },
-            { name: '--semantic-success', value: '#2E976E' },
-            { name: '--semantic-warning', value: '#E09E1F' },
-          ].map((token) => (
-            <div key={token.name} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {
+              title: 'Grey',
+              tokens: [
+                { name: 'white', value: '#FFFFFF' },
+                { name: 'grey-10', value: '#FFFFFF' },
+                { name: 'grey-20', value: '#F7F7F7' },
+                { name: 'grey-30', value: '#EDEDED' },
+                { name: 'grey-40', value: '#DBDBDB' },
+                { name: 'grey-50', value: '#BABABA' },
+                { name: 'grey-60', value: '#8F8F8F' },
+                { name: 'grey-70', value: '#6B6B6B' },
+                { name: 'grey-80', value: '#4D4D4D' },
+                { name: 'grey-90', value: '#333333' },
+                { name: 'grey-100', value: '#141414' },
+                { name: 'black', value: '#000000' },
+              ],
+            },
+            {
+              title: 'Blue',
+              tokens: [
+                { name: 'blue-10', value: '#EDF4FF' },
+                { name: 'blue-20', value: '#CCE0FF' },
+                { name: 'blue-30', value: '#99C2FF' },
+                { name: 'blue-40', value: '#61A1FF' },
+                { name: 'blue-50', value: '#3B8AFF' },
+                { name: 'blue-60', value: '#2170F0' },
+                { name: 'blue-70', value: '#1959C7' },
+                { name: 'blue-80', value: '#134699' },
+                { name: 'blue-90', value: '#0D2E6B' },
+                { name: 'blue-100', value: '#081D47' },
+              ],
+            },
+            {
+              title: 'Green',
+              tokens: [
+                { name: 'green-10', value: '#EEFAF3' },
+                { name: 'green-20', value: '#C7F0DB' },
+                { name: 'green-30', value: '#94DEB9' },
+                { name: 'green-40', value: '#61C796' },
+                { name: 'green-50', value: '#42B081' },
+                { name: 'green-60', value: '#2E976E' },
+                { name: 'green-70', value: '#217D5C' },
+                { name: 'green-80', value: '#175F47' },
+                { name: 'green-90', value: '#0F4333' },
+                { name: 'green-100', value: '#092B21' },
+              ],
+            },
+            {
+              title: 'Red',
+              tokens: [
+                { name: 'red-10', value: '#FFF0F0' },
+                { name: 'red-20', value: '#FFD1D1' },
+                { name: 'red-30', value: '#FFA3A3' },
+                { name: 'red-40', value: '#F56F6F' },
+                { name: 'red-50', value: '#E64D4D' },
+                { name: 'red-60', value: '#CC3333' },
+                { name: 'red-70', value: '#A32929' },
+                { name: 'red-80', value: '#7D1F1F' },
+                { name: 'red-90', value: '#571414' },
+                { name: 'red-100', value: '#380D0D' },
+              ],
+            },
+            {
+              title: 'Yellow',
+              tokens: [
+                { name: 'yellow-10', value: '#FFF9EB' },
+                { name: 'yellow-20', value: '#FFF0C7' },
+                { name: 'yellow-30', value: '#FFE191' },
+                { name: 'yellow-40', value: '#FAD05C' },
+                { name: 'yellow-50', value: '#F3B538' },
+                { name: 'yellow-60', value: '#E09E1F' },
+                { name: 'yellow-70', value: '#B87F17' },
+                { name: 'yellow-80', value: '#896111' },
+                { name: 'yellow-90', value: '#61440C' },
+                { name: 'yellow-100', value: '#402E07' },
+              ],
+            },
+          ].map((scale) => (
+            <div key={scale.title}>
               <div style={{
-                width: '100%',
-                height: '80px',
-                backgroundColor: token.value,
-                borderRadius: '6px',
-                border: '1px solid rgba(0,0,0,0.08)',
-              }} />
-              <div style={{
-                fontFamily: 'monospace',
                 fontSize: '13px',
-                color: '#0066cc',
-                fontWeight: '500',
-                marginBottom: '4px',
+                fontWeight: '600',
+                marginBottom: '12px',
+                color: 'rgba(0,0,0,0.8)',
               }}>
-                {token.name}
+                {scale.title}
               </div>
+
+              {/* Color swatches in a horizontal row */}
               <div style={{
-                fontSize: '12px',
-                color: 'rgba(0,0,0,0.5)',
-                fontFamily: 'monospace',
+                display: 'flex',
+                gap: '0',
+                marginBottom: '12px',
+                border: '1px solid rgba(0,0,0,0.1)',
+                borderRadius: '8px',
+                overflow: 'hidden',
               }}>
-                {token.value}
+                {scale.tokens.map((token, idx) => (
+                  <div
+                    key={token.name}
+                    style={{
+                      flex: 1,
+                      height: '64px',
+                      backgroundColor: token.value,
+                      borderRight: idx < scale.tokens.length - 1 ? '1px solid rgba(0,0,0,0.08)' : 'none',
+                      position: 'relative',
+                      cursor: 'default',
+                    }}
+                    title={`${token.name}: ${token.value}`}
+                  />
+                ))}
+              </div>
+
+              {/* Token details table */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: `repeat(${scale.tokens.length}, 1fr)`,
+                gap: '8px',
+                fontSize: '11px',
+              }}>
+                {scale.tokens.map((token) => (
+                  <div key={token.name} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <div style={{
+                      fontFamily: 'monospace',
+                      fontSize: '11px',
+                      color: 'rgba(0,0,0,0.9)',
+                      fontWeight: '500',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap',
+                    }}>
+                      {token.name}
+                    </div>
+                    <div style={{
+                      fontFamily: 'monospace',
+                      fontSize: '10px',
+                      color: 'rgba(0,0,0,0.5)',
+                    }}>
+                      {token.value}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* State Layers */}
-      <section
-        style={{
-          padding: '32px',
-          backgroundColor: '#fafafa',
-          borderRadius: '8px',
-          border: '1px solid rgba(0,0,0,0.08)',
-        }}
-      >
-        <h3 style={{ fontSize: '16px', fontWeight: '500', marginTop: 0, marginBottom: '8px' }}>
-          State Layers
+      {/* Semantic Tokens */}
+      <section>
+        <h3 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '20px', marginTop: 0, color: 'rgba(0,0,0,0.9)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+          Semantic Tokens
         </h3>
-        <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.6)', marginTop: 0, marginBottom: '24px' }}>
-          Hover and pressed state opacity tokens
-        </p>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '16px 24px',
-          fontSize: '14px',
+          gridTemplateColumns: 'auto auto 1fr',
+          gap: '12px 24px',
+          alignItems: 'center',
         }}>
           {[
-            { name: '--state-layer-on-surface-hovered-opacity', value: '0.04' },
-            { name: '--state-layer-on-surface-pressed-opacity', value: '0.12' },
+            { category: 'Foreground', tokens: [
+              { name: 'foreground-inverseprimary', value: '#000000' },
+              { name: 'foreground-secondary', value: '#F7F7F7' },
+              { name: 'foreground-inversetertiary', value: '#8F8F8F' },
+              { name: 'foreground-disabled', value: '#BABABA' },
+            ]},
+            { category: 'Background', tokens: [
+              { name: 'background-primary', value: '#000000' },
+              { name: 'background-disabled', value: '#EDEDED' },
+            ]},
+            { category: 'Border & Fill', tokens: [
+              { name: 'border-selected', value: '#000000' },
+              { name: 'fill-content', value: '#000000' },
+              { name: 'fill-contentdisabled', value: '#BABABA' },
+            ]},
+            { category: 'Semantic', tokens: [
+              { name: 'semantic-error', value: '#CC3333' },
+              { name: 'semantic-success', value: '#2E976E' },
+              { name: 'semantic-warning', value: '#E09E1F' },
+            ]},
+          ].map((group) => (
+            <React.Fragment key={group.category}>
+              <div style={{
+                fontSize: '12px',
+                fontWeight: '600',
+                color: 'rgba(0,0,0,0.5)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+                gridColumn: '1 / -1',
+                marginTop: group.category !== 'Foreground' ? '16px' : '0',
+                paddingBottom: '8px',
+                borderBottom: '1px solid rgba(0,0,0,0.06)',
+              }}>
+                {group.category}
+              </div>
+              {group.tokens.map((token) => (
+                <React.Fragment key={token.name}>
+                  <div style={{
+                    width: '48px',
+                    height: '32px',
+                    backgroundColor: token.value,
+                    borderRadius: '4px',
+                    border: '1px solid rgba(0,0,0,0.1)',
+                  }} />
+                  <div style={{
+                    fontFamily: 'monospace',
+                    fontSize: '12px',
+                    color: 'rgba(0,0,0,0.9)',
+                    fontWeight: '500',
+                  }}>
+                    {token.name}
+                  </div>
+                  <div style={{
+                    fontFamily: 'monospace',
+                    fontSize: '11px',
+                    color: 'rgba(0,0,0,0.5)',
+                  }}>
+                    {token.value}
+                  </div>
+                </React.Fragment>
+              ))}
+            </React.Fragment>
+          ))}
+        </div>
+      </section>
+
+      {/* State Layers */}
+      <section>
+        <h3 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '20px', marginTop: 0, color: 'rgba(0,0,0,0.9)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+          State Layers
+        </h3>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'auto 1fr',
+          gap: '12px 24px',
+          alignItems: 'center',
+          maxWidth: '600px',
+        }}>
+          {[
+            { name: 'state-layer-on-surface-hovered-opacity', value: '0.04', description: 'Hover state opacity' },
+            { name: 'state-layer-on-surface-pressed-opacity', value: '0.12', description: 'Pressed state opacity' },
           ].map((token) => (
             <React.Fragment key={token.name}>
               <div style={{
                 fontFamily: 'monospace',
-                fontSize: '13px',
-                color: '#0066cc',
+                fontSize: '12px',
+                color: 'rgba(0,0,0,0.9)',
                 fontWeight: '500',
               }}>
                 {token.name}
               </div>
               <div style={{
-                fontSize: '13px',
-                color: 'rgba(0,0,0,0.7)',
-                fontFamily: 'monospace',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
               }}>
-                {token.value}
+                <div style={{
+                  fontFamily: 'monospace',
+                  fontSize: '11px',
+                  color: 'rgba(0,0,0,0.5)',
+                }}>
+                  {token.value}
+                </div>
+                <div style={{
+                  fontSize: '11px',
+                  color: 'rgba(0,0,0,0.6)',
+                  fontStyle: 'italic',
+                }}>
+                  {token.description}
+                </div>
               </div>
             </React.Fragment>
           ))}
