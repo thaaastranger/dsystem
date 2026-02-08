@@ -1,0 +1,484 @@
+{
+  "fontFamily": {
+    "inter": {
+      "$type": "string",
+      "$value": "inter",
+      "$description": "Font Family variable for CircularXX",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:185",
+        "com.figma.scopes": [
+          "FONT_FAMILY"
+        ],
+        "com.figma.type": "string",
+        "com.figma.isOverride": true
+      }
+    }
+  },
+  "fontSize": {
+    "10": {
+      "$type": "number",
+      "$value": 10,
+      "$description": "Font Size variable for 10",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:186",
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "12": {
+      "$type": "number",
+      "$value": 12,
+      "$description": "Font Size variable for 12",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:187",
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "13": {
+      "$type": "number",
+      "$value": 13,
+      "$description": "Font Size variable for 13",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:188",
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "14": {
+      "$type": "number",
+      "$value": 14,
+      "$description": "Font Size variable for 14",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:189",
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "16": {
+      "$type": "number",
+      "$value": 16,
+      "$description": "Font Size variable for 16",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:190",
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "20": {
+      "$type": "number",
+      "$value": 20,
+      "$description": "Font Size variable for 20",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:191",
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "24": {
+      "$type": "number",
+      "$value": 24,
+      "$description": "Font Size variable for 24",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:192",
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "34": {
+      "$type": "number",
+      "$value": 34,
+      "$description": "Font Size variable for 34",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:193",
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "48": {
+      "$type": "number",
+      "$value": 48,
+      "$description": "Font Size variable for 48",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:194",
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "60": {
+      "$type": "number",
+      "$value": 60,
+      "$description": "Font Size variable for 60",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:195",
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "64": {
+      "$type": "number",
+      "$value": 64,
+      "$description": "Font Size variable for 64",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:196",
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "96": {
+      "$type": "number",
+      "$value": 96,
+      "$description": "Font Size variable for 96",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:197",
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.isOverride": true
+      }
+    }
+  },
+  "fontWeight": {
+    "light": {
+      "$type": "number",
+      "$value": 300,
+      "$description": "Font Weight variable for light",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:198",
+        "com.figma.scopes": [
+          "FONT_STYLE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "regular": {
+      "$type": "number",
+      "$value": 400,
+      "$description": "Font Weight variable for regular",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:199",
+        "com.figma.scopes": [
+          "FONT_STYLE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "medium": {
+      "$type": "number",
+      "$value": 500,
+      "$description": "Font Weight variable for medium",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:200",
+        "com.figma.scopes": [
+          "FONT_STYLE"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "bold": {
+      "$type": "number",
+      "$value": 700,
+      "$description": "Font Weight variable for medium",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:226",
+        "com.figma.scopes": [
+          "FONT_STYLE"
+        ],
+        "com.figma.isOverride": true
+      }
+    }
+  },
+  "letterSpacing": {
+    "0": {
+      "$type": "number",
+      "$value": 0,
+      "$description": "Letter Spacing variable for 0",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:201",
+        "com.figma.scopes": [
+          "LETTER_SPACING"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "1": {
+      "$type": "number",
+      "$value": 1,
+      "$description": "Letter Spacing variable for 1",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:202",
+        "com.figma.scopes": [
+          "LETTER_SPACING"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "-1": {
+      "$type": "number",
+      "$value": -1,
+      "$description": "Letter Spacing variable for -1",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:203",
+        "com.figma.scopes": [
+          "LETTER_SPACING"
+        ],
+        "com.figma.isOverride": true
+      }
+    }
+  },
+  "lineHeight": {
+    "10": {
+      "$type": "number",
+      "$value": 10,
+      "$description": "Line Height variable for 10",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:204",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "12": {
+      "$type": "number",
+      "$value": 12,
+      "$description": "Line Height variable for 12",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:205",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "14": {
+      "$type": "number",
+      "$value": 14,
+      "$description": "Line Height variable for 14",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:206",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "18": {
+      "$type": "number",
+      "$value": 18,
+      "$description": "Line Height variable for 18",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:207",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "20": {
+      "$type": "number",
+      "$value": 20,
+      "$description": "Line Height variable for 20",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:208",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "22": {
+      "$type": "number",
+      "$value": 22,
+      "$description": "Line Height variable for 22",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:209",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "24": {
+      "$type": "number",
+      "$value": 24,
+      "$description": "Line Height variable for 24",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:210",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "26": {
+      "$type": "number",
+      "$value": 26,
+      "$description": "Line Height variable for 26",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:211",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "32": {
+      "$type": "number",
+      "$value": 32,
+      "$description": "Line Height variable for 32",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:212",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "40": {
+      "$type": "number",
+      "$value": 40,
+      "$description": "Line Height variable for 40",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:213",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "48": {
+      "$type": "number",
+      "$value": 48,
+      "$description": "Line Height variable for 48",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:214",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "56": {
+      "$type": "number",
+      "$value": 56,
+      "$description": "Line Height variable for 56",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:215",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "72": {
+      "$type": "number",
+      "$value": 72,
+      "$description": "Line Height variable for 72",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:216",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "112": {
+      "$type": "number",
+      "$value": 112,
+      "$description": "Line Height variable for 112",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:217",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "117": {
+      "$type": "number",
+      "$value": 117,
+      "$description": "Line Height variable for 117",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:218",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "143": {
+      "$type": "number",
+      "$value": 143,
+      "$description": "Line Height variable for 143",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:219",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "150": {
+      "$type": "number",
+      "$value": 150,
+      "$description": "Line Height variable for 150",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:220",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "160": {
+      "$type": "number",
+      "$value": 160,
+      "$description": "Line Height variable for 160",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:221",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "166": {
+      "$type": "number",
+      "$value": 166,
+      "$description": "Line Height variable for 166",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4:222",
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.isOverride": true
+      }
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "typography"
+  }
+}

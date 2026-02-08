@@ -1,0 +1,179 @@
+/**
+ * Button Component Styles
+ * All values reference CSS custom properties from design tokens
+ * NO HARD-CODED VALUES ALLOWED
+ */
+
+/* Base button styles - applies to all variants */
+.button {
+  /* Layout */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap);
+
+  /* Sizing */
+  min-height: var(--btn-min-height);
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+
+  /* Typography - all from tokens */
+  font-family: var(--typography-fontFamily-inter);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+
+  /* Visual - colors and borders from tokens */
+  background-color: var(--btn-bg);
+  color: var(--btn-fg);
+  border: var(--btn-border-width) solid var(--btn-border);
+  border-radius: var(--btn-border-radius);
+
+  /* Interaction */
+  cursor: pointer;
+  user-select: none;
+  transition: all 150ms ease-in-out;
+  overflow: hidden;
+
+  /* Reset browser defaults */
+  appearance: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* State layer overlay for hover/pressed effects */
+.stateLayer {
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  pointer-events: none;
+  transition: background-color 150ms ease-in-out;
+  z-index: 1;
+}
+
+/* Hover state - applies state layer overlay */
+.button:hover:not(:disabled) .stateLayer {
+  background-color: var(--btn-hover);
+}
+
+/* Pressed state - applies stronger state layer overlay */
+.button:active:not(:disabled) .stateLayer {
+  background-color: var(--btn-pressed);
+}
+
+/* Focus state - keyboard navigation accessibility */
+.button:focus-visible {
+  outline: 2px solid var(--button-border-selected);
+  outline-offset: 2px;
+}
+
+/* Disabled state - uses disabled tokens */
+.button:disabled {
+  background-color: var(--button-background-disabled);
+  color: var(--button-foreground-disabled);
+  border-color: var(--button-border-disabled);
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/* Outlined variant disabled - transparent background */
+.button--outlined:disabled {
+  background-color: transparent;
+}
+
+/* Ghost variant disabled - transparent background and border */
+.button--ghost:disabled {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* Full width modifier */
+.button--fullWidth {
+  width: 100%;
+}
+
+/* Icon only modifier - square button */
+.button--iconOnly {
+  padding: var(--btn-padding-y);
+  aspect-ratio: 1;
+  min-width: var(--btn-min-height);
+}
+
+/* Label text wrapper */
+.label {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Icon wrapper */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Loading state */
+.button--loading {
+  pointer-events: none;
+  position: relative;
+}
+
+.button--loading .label,
+.button--loading .icon {
+  opacity: 0;
+}
+
+/* Loading spinner */
+.spinner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.spinnerCircle {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*
+ * Variant-specific styles
+ * These are minimal as most styling comes from token values via CSS custom properties
+ */
+
+/* Filled variant - default, inherits all base styles */
+.button--filled {
+  /* All styles come from tokens via CSS custom properties */
+}
+
+/* Outlined variant - specific adjustments if needed */
+.button--outlined {
+  /* All styles come from tokens via CSS custom properties */
+}
+
+/* Ghost variant - specific adjustments if needed */
+.button--ghost {
+  /* All styles come from tokens via CSS custom properties */
+}

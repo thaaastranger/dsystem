@@ -1,0 +1,68 @@
+/**
+ * Panel Component Styles
+ * Token-driven container component
+ */
+
+.panel {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-padding-9); /* 24px */
+
+  /* Spacing */
+  padding: var(--padding-padding-11); /* 32px */
+
+  /* Visual */
+  background-color: var(--semantic-grey-background-primary);
+  border-radius: var(--radi-6); /* 12px */
+
+  /* Box model */
+  box-sizing: border-box;
+}
+
+/* Elevated variant - with shadow */
+.panel--elevated {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08),
+              0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Outlined variant - with border */
+.panel--outlined {
+  border: 1px solid var(--semantic-grey-border-unselected);
+}
+
+/* Header section */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-padding-2); /* 4px */
+}
+
+/* Title */
+.title {
+  margin: 0;
+  padding: 0;
+  font-family: var(--typography-fontFamily-inter);
+  font-size: var(--typography-fontSize-20); /* 20px */
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--semantic-grey-foreground-primary);
+}
+
+/* Description */
+.description {
+  margin: 0;
+  padding: 0;
+  font-family: var(--typography-fontFamily-inter);
+  font-size: var(--typography-fontSize-14); /* 14px */
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--semantic-grey-foreground-secondary);
+}
+
+/* Content area */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-padding-7); /* 16px */
+}
