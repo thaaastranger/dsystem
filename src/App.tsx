@@ -5,226 +5,156 @@ import './tokens/tokens.css';
 import './App.css';
 
 /**
- * Demo App - Test Environment for Design System Components
+ * Design System App
+ * Showcases Button component with Figma panel layout
  */
+
+// Icon components
+const ErrorIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <circle cx="10" cy="10" r="8" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M10 6V10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <circle cx="10" cy="13.5" r="0.75" fill="currentColor" />
+  </svg>
+);
+
+const StarIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path
+      d="M10 2L12.5 8L18 9L14 13L15 19L10 16L5 19L6 13L2 9L7.5 8L10 2Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
 function App() {
-  const [count, setCount] = React.useState(0);
-  const [loading, setLoading] = React.useState(false);
-
-  const handleAsyncAction = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setCount((c) => c + 1);
-      setLoading(false);
-    }, 2000);
-  };
-
-  // Sample icon component
-  const StarIcon = () => (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path
-        d="M8 1L10.5 6.5L16 7L12 11L13 16L8 13L3 16L4 11L0 7L5.5 6.5L8 1Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-
-  const PlusIcon = () => (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path
-        d="M8 1V15M1 8H15"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-
   return (
-    <div className="app">
-      <div className="app-header">
-        <h1>Design System Test Environment</h1>
-        <p>Token-driven components with 1:1 Figma fidelity</p>
-      </div>
+    <Panel
+      title="Button Component"
+      breadcrumb={['Components', 'Button']}
+    >
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+        {/* Button Grid - All Variants */}
+        <section>
+          <h2 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '24px', marginTop: 0 }}>
+            Button Variants
+          </h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, auto)',
+            gap: '24px 48px',
+            justifyContent: 'start',
+          }}>
+            {/* Row 1: Enabled State */}
+            <div>
+              <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.5)', marginBottom: '12px' }}>Filled</p>
+              <Button variant="filled" iconLeft={<ErrorIcon />} iconRight={<ErrorIcon />}>
+                Label
+              </Button>
+            </div>
+            <div>
+              <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.5)', marginBottom: '12px' }}>Outlined</p>
+              <Button variant="outlined" iconLeft={<ErrorIcon />} iconRight={<ErrorIcon />}>
+                Label
+              </Button>
+            </div>
+            <div>
+              <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.5)', marginBottom: '12px' }}>Ghost (Text Only)</p>
+              <Button variant="ghost" iconLeft={<ErrorIcon />} iconRight={<ErrorIcon />}>
+                Label
+              </Button>
+            </div>
 
-      <div className="app-content">
-        {/* Button Variants Panel */}
-        <Panel
-          title="Button Variants"
-          description="Three button styles with different visual weights"
-          variant="elevated"
-        >
-          <div className="button-group">
-            <Button variant="filled" onClick={() => setCount(count + 1)}>
-              Filled Button
-            </Button>
-            <Button variant="outlined" onClick={() => setCount(count + 1)}>
-              Outlined Button
-            </Button>
-            <Button variant="ghost" onClick={() => setCount(count + 1)}>
-              Ghost Button
-            </Button>
+            {/* Row 2: Disabled State */}
+            <div>
+              <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.5)', marginBottom: '12px' }}>Disabled</p>
+              <Button variant="filled" iconLeft={<ErrorIcon />} iconRight={<ErrorIcon />} disabled>
+                Label
+              </Button>
+            </div>
+            <div>
+              <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.5)', marginBottom: '12px' }}>Disabled</p>
+              <Button variant="outlined" iconLeft={<ErrorIcon />} iconRight={<ErrorIcon />} disabled>
+                Label
+              </Button>
+            </div>
+            <div>
+              <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.5)', marginBottom: '12px' }}>Disabled</p>
+              <Button variant="ghost" iconLeft={<ErrorIcon />} iconRight={<ErrorIcon />} disabled>
+                Label
+              </Button>
+            </div>
           </div>
-          <div className="info-box">
-            <span>Button clicks: {count}</span>
-          </div>
-        </Panel>
+        </section>
 
-        {/* Button States Panel */}
-        <Panel
-          title="Button States"
-          description="Interactive states and loading behavior"
-          variant="outlined"
-        >
-          <div className="button-group">
-            <Button variant="filled">Default</Button>
-            <Button variant="filled" disabled>
-              Disabled
-            </Button>
-            <Button variant="filled" loading={loading} onClick={handleAsyncAction}>
-              {loading ? 'Loading...' : 'Async Action'}
-            </Button>
-          </div>
-          <div className="button-group">
-            <Button variant="outlined">Default</Button>
-            <Button variant="outlined" disabled>
-              Disabled
-            </Button>
-            <Button variant="outlined" loading={loading}>
-              Loading
-            </Button>
-          </div>
-          <div className="button-group">
-            <Button variant="ghost">Default</Button>
-            <Button variant="ghost" disabled>
-              Disabled
-            </Button>
-            <Button variant="ghost" loading={loading}>
-              Loading
-            </Button>
-          </div>
-        </Panel>
-
-        {/* Buttons with Icons Panel */}
-        <Panel
-          title="Buttons with Icons"
-          description="Icon positioning and icon-only mode"
-          variant="default"
-        >
-          <div className="button-group">
+        {/* Icon Variations */}
+        <section>
+          <h2 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '24px', marginTop: 0 }}>
+            Icon Variations
+          </h2>
+          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             <Button variant="filled" iconLeft={<StarIcon />}>
               Icon Left
             </Button>
             <Button variant="outlined" iconRight={<StarIcon />}>
               Icon Right
             </Button>
-            <Button
-              variant="ghost"
-              iconLeft={<StarIcon />}
-              iconRight={<PlusIcon />}
-            >
+            <Button variant="ghost" iconLeft={<StarIcon />} iconRight={<StarIcon />}>
               Both Icons
             </Button>
+            <Button variant="filled">
+              No Icons
+            </Button>
           </div>
-          <div className="button-group">
-            <Button
-              variant="filled"
-              iconOnly
-              iconLeft={<StarIcon />}
-              aria-label="Favorite"
-            />
-            <Button
-              variant="outlined"
-              iconOnly
-              iconLeft={<PlusIcon />}
-              aria-label="Add"
-            />
-            <Button
-              variant="ghost"
-              iconOnly
-              iconLeft={<StarIcon />}
-              aria-label="Star"
-            />
-          </div>
-        </Panel>
+        </section>
 
-        {/* Full Width Buttons Panel */}
-        <Panel
-          title="Full Width Buttons"
-          description="Buttons that span the full container width"
-          variant="outlined"
-        >
-          <Button variant="filled" fullWidth>
-            Primary Action
-          </Button>
-          <Button variant="outlined" fullWidth>
-            Secondary Action
-          </Button>
-          <Button variant="ghost" fullWidth>
-            Tertiary Action
-          </Button>
-        </Panel>
-
-        {/* Interactive Demo Panel */}
-        <Panel
-          title="Interactive Demo"
-          description="Try out the buttons with real interactions"
-          variant="elevated"
-        >
-          <div className="demo-section">
-            <p className="demo-label">Counter: {count}</p>
-            <div className="button-group">
-              <Button
-                variant="filled"
-                iconLeft={<PlusIcon />}
-                onClick={() => setCount(count + 1)}
-              >
-                Increment
-              </Button>
-              <Button
-                variant="outlined"
-                onClick={() => setCount(Math.max(0, count - 1))}
-              >
-                Decrement
-              </Button>
-              <Button variant="ghost" onClick={() => setCount(0)}>
-                Reset
-              </Button>
-            </div>
+        {/* Interactive Examples */}
+        <section>
+          <h2 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '24px', marginTop: 0 }}>
+            Interactive States
+          </h2>
+          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+            <Button variant="filled" onClick={() => alert('Filled button clicked')}>
+              Click Me
+            </Button>
+            <Button variant="outlined" onClick={() => alert('Outlined button clicked')}>
+              Click Me
+            </Button>
+            <Button variant="ghost" onClick={() => alert('Ghost button clicked')}>
+              Click Me
+            </Button>
           </div>
+          <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.5)', marginTop: '16px', marginBottom: 0 }}>
+            Try hovering and clicking the buttons to see state changes
+          </p>
+        </section>
 
-          <div className="demo-section">
-            <p className="demo-label">Async Operation</p>
-            <div className="button-group">
-              <Button
-                variant="filled"
-                loading={loading}
-                onClick={handleAsyncAction}
-              >
-                {loading ? 'Processing...' : 'Start Process'}
-              </Button>
-              <Button
-                variant="outlined"
-                disabled={loading}
-                onClick={() => {
-                  setLoading(false);
-                  setCount(0);
-                }}
-              >
-                Cancel
-              </Button>
-            </div>
+        {/* Design Tokens Info */}
+        <section style={{
+          padding: '24px',
+          backgroundColor: '#f7f7f7',
+          borderRadius: '6px',
+        }}>
+          <h3 style={{ fontSize: '14px', fontWeight: '500', marginTop: 0, marginBottom: '16px' }}>
+            Design Tokens
+          </h3>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '12px',
+            fontSize: '13px',
+            color: 'rgba(0,0,0,0.7)',
+          }}>
+            <div>• Padding: 6px × 12px</div>
+            <div>• Border radius: 6px</div>
+            <div>• Font: Inter Medium 14px</div>
+            <div>• Icon size: 20px</div>
+            <div>• Gap: 4px</div>
+            <div>• Min height: 32px</div>
           </div>
-        </Panel>
+        </section>
       </div>
-
-      <footer className="app-footer">
-        <p>
-          Built with <strong>@dsystem/components</strong> • Zero hard-coded
-          values • Token-driven architecture
-        </p>
-      </footer>
-    </div>
+    </Panel>
   );
 }
 

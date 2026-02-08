@@ -66,14 +66,14 @@ export const buttonVariants = {
 export const buttonSizes = {
   /**
    * Medium size button configuration
-   * Default and only size for initial implementation
+   * Matches Figma design at node-id=1-114
    */
   medium: {
-    // Horizontal padding - left and right spacing
-    paddingX: 'var(--padding-padding-7)', // 16px
+    // Horizontal padding - left and right spacing (from Figma)
+    paddingX: 'var(--padding-padding-6)', // 12px
 
-    // Vertical padding - top and bottom spacing
-    paddingY: 'var(--padding-padding-4)', // 8px
+    // Vertical padding - top and bottom spacing (from Figma)
+    paddingY: 'var(--padding-padding-3)', // 6px
 
     // Font size for button text
     fontSize: 'var(--typography-fontSize-14)', // 14px
@@ -81,14 +81,14 @@ export const buttonSizes = {
     // Font weight for button text
     fontWeight: '500', // Medium weight
 
-    // Border radius for rounded corners
+    // Border radius for rounded corners (from Figma)
     borderRadius: 'var(--radi-4)', // 6px
 
     // Gap between icon and text
     gap: 'var(--padding-padding-2)', // 4px
 
-    // Minimum height for touch targets (accessibility)
-    minHeight: '40px',
+    // Minimum height calculated from padding + line height (6px * 2 + 14px = 32px)
+    minHeight: '32px',
   },
 } as const;
 

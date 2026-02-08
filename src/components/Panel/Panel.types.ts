@@ -1,31 +1,50 @@
 import { ReactNode, HTMLAttributes } from 'react';
 
 /**
+ * Sidebar navigation item
+ */
+export interface SidebarItem {
+  label: string;
+  icon: string;
+  href?: string;
+}
+
+/**
+ * Tab configuration
+ */
+export interface Tab {
+  label: string;
+  active: boolean;
+  href?: string;
+}
+
+/**
  * Panel component props
+ * Application layout with sidebar and main content area
  */
 export interface PanelProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * Panel title
+   * Page title displayed in header
    */
   title?: string;
 
   /**
-   * Panel description/subtitle
+   * Breadcrumb navigation items
    */
-  description?: string;
+  breadcrumb?: string[];
 
   /**
-   * Panel content
+   * Tab navigation items
+   */
+  tabs?: Tab[];
+
+  /**
+   * Sidebar navigation items
+   */
+  sidebarItems?: SidebarItem[];
+
+  /**
+   * Main content
    */
   children?: ReactNode;
-
-  /**
-   * Panel width
-   */
-  width?: string;
-
-  /**
-   * Panel background variant
-   */
-  variant?: 'default' | 'elevated' | 'outlined';
 }
