@@ -384,17 +384,16 @@ const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack, onBreadcrum
               date: '2026-02-08',
               version: 'v1.2.0',
               changes: [
-                { type: 'Added', description: 'Specs tab with comprehensive token documentation' },
-                { type: 'Added', description: 'Token references in Component Tokens tab of Foundation page' },
-                { type: 'Changed', description: 'Updated icons from emoji to Lucide React icons' },
+                { type: 'Added', description: 'Specs tab with comprehensive token documentation for Button' },
+                { type: 'Added', description: 'Changelog tab with version history' },
+                { type: 'Changed', description: 'Updated button icons from emoji to Lucide React icons' },
               ],
             },
             {
               date: '2026-02-08',
               version: 'v1.1.0',
               changes: [
-                { type: 'Added', description: 'Navigation support for sidebar and breadcrumb' },
-                { type: 'Added', description: 'Foundation page integration' },
+                { type: 'Added', description: 'Clickable navigation support in Button detail page' },
               ],
             },
             {
@@ -405,7 +404,7 @@ const ButtonDetailPage: React.FC<ButtonDetailPageProps> = ({ onBack, onBreadcrum
                 { type: 'Added', description: 'Three variants: Filled, Outlined, Ghost' },
                 { type: 'Added', description: 'Icon support (left and right positions)' },
                 { type: 'Added', description: 'Disabled state' },
-                { type: 'Added', description: 'Token-driven design system' },
+                { type: 'Added', description: 'Token-driven styling with CSS variables' },
                 { type: 'Added', description: 'Hover, active, and focus states' },
               ],
             },

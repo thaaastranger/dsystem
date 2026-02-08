@@ -332,8 +332,8 @@ export const InputDetailPage: React.FC<InputDetailPageProps> = ({ onBack, onBrea
               date: '2026-02-08',
               version: 'v1.1.0',
               changes: [
-                { type: 'Added', description: 'Specs tab with comprehensive token documentation' },
-                { type: 'Added', description: 'Token references in Component Tokens tab of Foundation page' },
+                { type: 'Added', description: 'Specs tab with comprehensive token documentation for Input' },
+                { type: 'Added', description: 'Changelog tab with version history' },
               ],
             },
             {
@@ -346,7 +346,7 @@ export const InputDetailPage: React.FC<InputDetailPageProps> = ({ onBack, onBrea
                 { type: 'Added', description: 'Error state with custom error messages' },
                 { type: 'Added', description: 'Disabled state' },
                 { type: 'Added', description: 'Multiple input types (text, email, password, number, search)' },
-                { type: 'Added', description: 'Token-driven design system' },
+                { type: 'Added', description: 'Token-driven styling with CSS variables' },
                 { type: 'Added', description: 'Focus and hover states' },
               ],
             },
