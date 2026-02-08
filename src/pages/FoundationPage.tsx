@@ -180,128 +180,259 @@ export const FoundationPage: React.FC<FoundationPageProps> = ({ onNavigateToList
 
   // Typography tokens
   const TypographyView = () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       <section>
-        <h2 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '16px', marginTop: 0 }}>
+        <h2 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '8px', marginTop: 0 }}>
           Typography Tokens
         </h2>
-        <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.7)', marginTop: 0, marginBottom: '32px' }}>
-          Font family, size, and weight tokens for consistent typography.
+        <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.6)', marginTop: 0, marginBottom: 0 }}>
+          Font family, size, weight, and line height tokens for consistent typography across the design system.
         </p>
       </section>
 
-      <section
-        style={{
-          padding: '32px',
+      {/* Font Family */}
+      <section>
+        <h3 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '20px', marginTop: 0, color: 'rgba(0,0,0,0.9)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+          Font Family
+        </h3>
+
+        <div style={{
+          padding: '24px',
           backgroundColor: '#fafafa',
           borderRadius: '8px',
           border: '1px solid rgba(0,0,0,0.08)',
-        }}
-      >
-        <h3 style={{ fontSize: '16px', fontWeight: '500', marginTop: 0, marginBottom: '24px' }}>
-          Font Family
-        </h3>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '16px 24px',
-          fontSize: '14px',
-          marginBottom: '48px',
         }}>
           <div style={{
-            fontFamily: 'monospace',
-            fontSize: '13px',
-            color: '#0066cc',
-            fontWeight: '500',
+            display: 'grid',
+            gridTemplateColumns: 'auto 1fr',
+            gap: '16px 32px',
+            alignItems: 'center',
           }}>
-            --typography-fontFamily-inter
+            <div style={{
+              fontFamily: 'monospace',
+              fontSize: '12px',
+              color: 'rgba(0,0,0,0.9)',
+              fontWeight: '500',
+            }}>
+              --typography-fontFamily-inter
+            </div>
+            <div style={{
+              fontFamily: 'monospace',
+              fontSize: '11px',
+              color: 'rgba(0,0,0,0.5)',
+            }}>
+              Inter
+            </div>
           </div>
+
           <div style={{
-            fontSize: '13px',
-            color: 'rgba(0,0,0,0.7)',
-            fontFamily: 'monospace',
+            marginTop: '24px',
+            padding: '20px',
+            backgroundColor: '#ffffff',
+            borderRadius: '6px',
+            border: '1px solid rgba(0,0,0,0.06)',
           }}>
-            Inter
+            <div style={{ fontSize: '16px', color: 'rgba(0,0,0,0.9)', marginBottom: '8px' }}>
+              The quick brown fox jumps over the lazy dog
+            </div>
+            <div style={{ fontSize: '13px', color: 'rgba(0,0,0,0.6)', fontFamily: 'monospace' }}>
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ
+            </div>
+            <div style={{ fontSize: '13px', color: 'rgba(0,0,0,0.6)', fontFamily: 'monospace' }}>
+              abcdefghijklmnopqrstuvwxyz
+            </div>
+            <div style={{ fontSize: '13px', color: 'rgba(0,0,0,0.6)', fontFamily: 'monospace' }}>
+              0123456789 !@#$%^&*()
+            </div>
           </div>
         </div>
+      </section>
 
-        <h3 style={{ fontSize: '16px', fontWeight: '500', marginTop: 0, marginBottom: '24px' }}>
-          Font Sizes
+      {/* Type Scale */}
+      <section>
+        <h3 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '20px', marginTop: 0, color: 'rgba(0,0,0,0.9)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+          Type Scale
         </h3>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '200px 1fr auto',
-          gap: '16px 24px',
-          fontSize: '14px',
-          marginBottom: '48px',
-        }}>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
           {[
-            { name: '--typography-fontSize-12', value: '12px' },
-            { name: '--typography-fontSize-14', value: '14px' },
-            { name: '--typography-fontSize-16', value: '16px' },
-            { name: '--typography-fontSize-18', value: '18px' },
-            { name: '--typography-fontSize-20', value: '20px' },
-            { name: '--typography-fontSize-24', value: '24px' },
-          ].map((token) => (
-            <React.Fragment key={token.name}>
+            { name: 'fontSize-24', size: '24px', weight: '600', sample: 'Large Heading', usage: 'Page titles, major sections' },
+            { name: 'fontSize-20', size: '20px', weight: '600', sample: 'Medium Heading', usage: 'Section headings' },
+            { name: 'fontSize-18', size: '18px', weight: '500', sample: 'Small Heading', usage: 'Subsection titles' },
+            { name: 'fontSize-16', size: '16px', weight: '500', sample: 'Large Body Text', usage: 'Emphasized content' },
+            { name: 'fontSize-14', size: '14px', weight: '400', sample: 'Body Text', usage: 'Main content, buttons' },
+            { name: 'fontSize-12', size: '12px', weight: '400', sample: 'Small Text', usage: 'Labels, captions, metadata' },
+          ].map((type) => (
+            <div
+              key={type.name}
+              style={{
+                padding: '24px',
+                backgroundColor: '#fafafa',
+                borderBottom: '1px solid rgba(0,0,0,0.06)',
+                display: 'grid',
+                gridTemplateColumns: '180px 1fr 200px',
+                gap: '24px',
+                alignItems: 'center',
+              }}
+            >
+              {/* Token Info */}
+              <div>
+                <div style={{
+                  fontFamily: 'monospace',
+                  fontSize: '11px',
+                  color: 'rgba(0,0,0,0.9)',
+                  fontWeight: '500',
+                  marginBottom: '4px',
+                }}>
+                  {type.name}
+                </div>
+                <div style={{
+                  fontSize: '11px',
+                  color: 'rgba(0,0,0,0.5)',
+                }}>
+                  {type.size} / {type.weight}
+                </div>
+              </div>
+
+              {/* Sample Text */}
               <div style={{
-                fontFamily: 'monospace',
-                fontSize: '13px',
-                color: '#0066cc',
-                fontWeight: '500',
+                fontSize: type.size,
+                fontWeight: type.weight,
+                color: 'rgba(0,0,0,0.9)',
+                lineHeight: '1.4',
               }}>
-                {token.name}
+                {type.sample}
               </div>
+
+              {/* Usage */}
               <div style={{
-                fontSize: '13px',
-                color: 'rgba(0,0,0,0.7)',
-                fontFamily: 'monospace',
+                fontSize: '11px',
+                color: 'rgba(0,0,0,0.6)',
+                lineHeight: '1.4',
               }}>
-                {token.value}
+                {type.usage}
               </div>
-              <div style={{ fontSize: token.value }}>
-                Aa
-              </div>
-            </React.Fragment>
+            </div>
           ))}
         </div>
+      </section>
 
-        <h3 style={{ fontSize: '16px', fontWeight: '500', marginTop: 0, marginBottom: '24px' }}>
+      {/* Font Weights */}
+      <section>
+        <h3 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '20px', marginTop: 0, color: 'rgba(0,0,0,0.9)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
           Font Weights
         </h3>
+
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr auto',
-          gap: '16px 24px',
-          fontSize: '14px',
+          padding: '24px',
+          backgroundColor: '#fafafa',
+          borderRadius: '8px',
+          border: '1px solid rgba(0,0,0,0.08)',
         }}>
-          {[
-            { name: '--typography-fontWeight-regular', value: '400' },
-            { name: '--typography-fontWeight-medium', value: '500' },
-            { name: '--typography-fontWeight-semibold', value: '600' },
-            { name: '--typography-fontWeight-bold', value: '700' },
-          ].map((token) => (
-            <React.Fragment key={token.name}>
-              <div style={{
-                fontFamily: 'monospace',
-                fontSize: '13px',
-                color: '#0066cc',
-                fontWeight: '500',
-              }}>
-                {token.name}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {[
+              { name: 'fontWeight-regular', value: '400', label: 'Regular', usage: 'Body text, descriptions' },
+              { name: 'fontWeight-medium', value: '500', label: 'Medium', usage: 'Buttons, emphasized text' },
+              { name: 'fontWeight-semibold', value: '600', label: 'Semibold', usage: 'Headings, labels' },
+              { name: 'fontWeight-bold', value: '700', label: 'Bold', usage: 'Strong emphasis, titles' },
+            ].map((weight) => (
+              <div
+                key={weight.name}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '200px 120px 1fr 180px',
+                  gap: '24px',
+                  alignItems: 'center',
+                  paddingBottom: '20px',
+                  borderBottom: weight.name !== 'fontWeight-bold' ? '1px solid rgba(0,0,0,0.06)' : 'none',
+                }}
+              >
+                <div style={{
+                  fontFamily: 'monospace',
+                  fontSize: '11px',
+                  color: 'rgba(0,0,0,0.9)',
+                  fontWeight: '500',
+                }}>
+                  {weight.name}
+                </div>
+                <div style={{
+                  fontSize: '11px',
+                  color: 'rgba(0,0,0,0.5)',
+                }}>
+                  {weight.value} · {weight.label}
+                </div>
+                <div style={{
+                  fontSize: '16px',
+                  fontWeight: weight.value,
+                  color: 'rgba(0,0,0,0.9)',
+                }}>
+                  The quick brown fox jumps over the lazy dog
+                </div>
+                <div style={{
+                  fontSize: '11px',
+                  color: 'rgba(0,0,0,0.6)',
+                }}>
+                  {weight.usage}
+                </div>
               </div>
-              <div style={{
-                fontSize: '13px',
-                color: 'rgba(0,0,0,0.7)',
-                fontFamily: 'monospace',
-              }}>
-                {token.value}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Line Heights & Spacing */}
+      <section>
+        <h3 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '20px', marginTop: 0, color: 'rgba(0,0,0,0.9)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+          Line Height & Spacing
+        </h3>
+
+        <div style={{
+          padding: '24px',
+          backgroundColor: '#fafafa',
+          borderRadius: '8px',
+          border: '1px solid rgba(0,0,0,0.08)',
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            {[
+              { name: 'Tight (1.2)', value: '1.2', usage: 'Large headings, display text' },
+              { name: 'Normal (1.4)', value: '1.4', usage: 'Headings, short text blocks' },
+              { name: 'Relaxed (1.6)', value: '1.6', usage: 'Body text, paragraphs' },
+            ].map((lineHeight, idx) => (
+              <div key={idx}>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: '12px',
+                }}>
+                  <div style={{
+                    fontSize: '12px',
+                    fontWeight: '600',
+                    color: 'rgba(0,0,0,0.8)',
+                  }}>
+                    {lineHeight.name}
+                  </div>
+                  <div style={{
+                    fontSize: '11px',
+                    color: 'rgba(0,0,0,0.5)',
+                  }}>
+                    {lineHeight.usage}
+                  </div>
+                </div>
+                <div style={{
+                  padding: '16px',
+                  backgroundColor: '#ffffff',
+                  borderRadius: '6px',
+                  border: '1px solid rgba(0,0,0,0.06)',
+                  fontSize: '14px',
+                  lineHeight: lineHeight.value,
+                  color: 'rgba(0,0,0,0.8)',
+                }}>
+                  The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs. How vexingly quick daft zebras jump! Sphinx of black quartz, judge my vow.
+                </div>
               </div>
-              <div style={{ fontWeight: token.value }}>
-                Sample Text
-              </div>
-            </React.Fragment>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
     </div>
