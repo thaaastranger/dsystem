@@ -316,8 +316,80 @@ export const InputDetailPage: React.FC<InputDetailPageProps> = ({ onBack, onBrea
         </div>
       )}
       {activeTab === 'Changelog' && (
-        <div style={{ fontSize: '14px', color: 'rgba(0,0,0,0.7)' }}>
-          Changelog coming soon...
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <section>
+            <h2 style={{ fontSize: '18px', fontWeight: '500', marginBottom: '16px', marginTop: 0 }}>
+              Changelog
+            </h2>
+            <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.7)', marginTop: 0, marginBottom: '32px' }}>
+              Track all changes and updates to the Input component.
+            </p>
+          </section>
+
+          {/* Changelog Entries */}
+          {[
+            {
+              date: '2026-02-08',
+              version: 'v1.1.0',
+              changes: [
+                { type: 'Added', description: 'Specs tab with comprehensive token documentation' },
+                { type: 'Added', description: 'Token references in Component Tokens tab of Foundation page' },
+              ],
+            },
+            {
+              date: '2026-02-08',
+              version: 'v1.0.0',
+              changes: [
+                { type: 'Added', description: 'Initial Input component implementation' },
+                { type: 'Added', description: 'Label and helper text support' },
+                { type: 'Added', description: 'Leading and trailing icon support' },
+                { type: 'Added', description: 'Error state with custom error messages' },
+                { type: 'Added', description: 'Disabled state' },
+                { type: 'Added', description: 'Multiple input types (text, email, password, number, search)' },
+                { type: 'Added', description: 'Token-driven design system' },
+                { type: 'Added', description: 'Focus and hover states' },
+              ],
+            },
+          ].map((entry, idx) => (
+            <section
+              key={idx}
+              style={{
+                padding: '24px',
+                backgroundColor: '#fafafa',
+                borderRadius: '8px',
+                border: '1px solid rgba(0,0,0,0.08)',
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '16px' }}>
+                <h3 style={{ fontSize: '16px', fontWeight: '500', margin: 0 }}>
+                  {entry.version}
+                </h3>
+                <span style={{ fontSize: '13px', color: 'rgba(0,0,0,0.5)', fontFamily: 'monospace' }}>
+                  {entry.date}
+                </span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {entry.changes.map((change, changeIdx) => (
+                  <div key={changeIdx} style={{ display: 'flex', gap: '8px', fontSize: '14px' }}>
+                    <span
+                      style={{
+                        display: 'inline-block',
+                        padding: '2px 8px',
+                        borderRadius: '4px',
+                        fontSize: '12px',
+                        fontWeight: '500',
+                        backgroundColor: change.type === 'Added' ? '#EEFAF3' : change.type === 'Changed' ? '#EDF4FF' : change.type === 'Fixed' ? '#FFF9EB' : '#FFF0F0',
+                        color: change.type === 'Added' ? '#2E976E' : change.type === 'Changed' ? '#2170F0' : change.type === 'Fixed' ? '#E09E1F' : '#CC3333',
+                      }}
+                    >
+                      {change.type}
+                    </span>
+                    <span style={{ color: 'rgba(0,0,0,0.8)' }}>{change.description}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))}
         </div>
       )}
     </Panel>
